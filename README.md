@@ -27,27 +27,19 @@ It allows managing menu items, tables, orders, users, and offers in an organized
 ---
 
 ## Installation
-1. Clone the repository:
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/SAMIR-ALSAIED/FoodSystem-.git
 
-Go to the project folder:
-cd FoodSystem-
-Install dependencies:
 composer install
 npm install
 npm run dev
-Copy the environment file and configure database settings:
+
 cp .env.example .env
 
-Edit the .env file and update your database credentials:
-DB_DATABASE=foodsystem
-DB_USERNAME=root
-DB_PASSWORD=
-Run migrations and seeders:
 php artisan migrate --seed
 
-Run the project locally:
 php artisan serve
 
 
