@@ -36,6 +36,7 @@
                <div class="card-header">
         <div class="row align-items-center">
 
+
             <!-- زر إضافة منتج -->
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="{{route('users.create')}}" class="btn btn-primary ">
@@ -92,7 +93,7 @@
                     <td>  {{$user->name}}</td>
                     <td> {{$user->email }} </td>
 
-                    <td>0</td>
+                    <td>{{ $user->getRoleNames()->implode(',') }}</td>
 
 
 

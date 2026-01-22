@@ -19,14 +19,10 @@ class RolesSeeder extends Seeder
 
 
 
-            $roles = ['admin', 'waiter', 'cashier'];
+        $role = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
 
-
-               foreach ($roles as $role) {
-            Role::create(['name' => $role]);
-    }
-
-
+               $permissions = Permission::all();
+        $role->syncPermissions($permissions);
     $user=  User::create([
 
     'name'=>'samir',

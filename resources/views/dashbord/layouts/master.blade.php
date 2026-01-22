@@ -165,7 +165,7 @@
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="{{asset('admin')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">  سيستم ادراة المطاعم   </span>
+      <span class="brand-text font-weight-light">  سيستم مطاعم   </span>
     </a>
 
     <!-- Sidebar -->
@@ -183,9 +183,11 @@
 
 
 
-
+      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
           <li class="nav-item">
             <a href="" class="nav-link">
@@ -200,8 +202,7 @@
 
 
 
-
-
+          @can('المستخدمين')
 
 
                   <li class="nav-item">
@@ -220,18 +221,51 @@
                   <p>بيانات المستخدمين</p>
                 </a>
               </li>
-     <li class="nav-item">
-                <a href="{{route('roles.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> الصلاحيات</p>
-                </a>
-              </li>
+
             </ul>
           </li>
+       @endcan
+
+
+
+                    @can('الصلاحيات')
+
+
+                  <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                صلاحيات
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="{{route('roles.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>بيانات الصلاحيات</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+                    @endcan
+
+
+
+
+
+
+
+
+
+
 <li class="nav-item mt-3">
     <form method="POST" action="{{route('logout')}}">
         @csrf
-        <button type="submit" class="btn btn-info btn-block  text-left ">
+        <button type="submit" class="btn btn-secondary btn-block  text-left ">
             <i class="fas fa-sign-out-alt me-2  " ></i> تسجيل الخروج
         </button>
     </form>

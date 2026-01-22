@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\User\AddUserRequest;
@@ -27,7 +28,11 @@ $users=User::with('roles')->get();
 
 public function create(){
 
-    return view('dashbord.users.create');
+
+    $roles = Role::all();
+
+
+    return view('dashbord.users.create',compact('roles'));
 
 
 
@@ -40,7 +45,12 @@ public function store(AddUserRequest $request){
   $data['password'] = Hash::make($data['password']);
 
      $user = User::create($data);
+    if(!empty($data['role'])) {
+        $role = Role::find($data['role']);
 
+            $user->assignRole($role->name);
+
+    }
      return redirect()->route('users.index')->with('success', 'تم اضافة المستخدم بنجاح');
 
 

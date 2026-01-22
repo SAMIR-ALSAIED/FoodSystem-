@@ -32,6 +32,8 @@
 
         <div class="card card-default">
 
+            @include('dashbord.partials.alerts')
+
           <form action="{{route('users.store')}}" method="POST" >
 
             @csrf
@@ -81,10 +83,36 @@
     <small class="text-danger mt-3">{{ $message }}</small>
 @enderror
 
-                  </select>
+
                 </div>
 
               </div>
+
+<div class="col-12">
+    <div class="form-group">
+        <label>الدور</label>
+
+        <select    name="role"
+            class="form-control "
+
+        >
+            <option value="">اختر الدور</option>
+
+            @foreach($roles as $role)
+                <option
+                    value="{{ $role->id }}"
+                    {{ old('role') == $role->id ? 'selected' : '' }}
+                >
+                    {{ $role->name }}
+                </option>
+            @endforeach
+        </select>
+
+        {{-- @error('role_id')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror --}}
+    </div>
+</div>
 
 
 

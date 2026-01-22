@@ -36,11 +36,16 @@
                <div class="card-header">
         <div class="row align-items-center">
 
+
+
             <!-- زر إضافة منتج -->
             <div class="col-md-3 mb-2 mb-md-0">
+
+            @can('انشاء صلاحية ')
                 <a href="{{route('roles.create')}}" class="btn btn-primary ">
                     <i class="fas fa-plus"></i> اضافة صلاحية
                 </a>
+                @endcan
             </div>
 
             <!-- فورم البحث -->
@@ -91,11 +96,18 @@
 
                     <td>
 
-                 <a href="" class="btn btn-sm btn-info">
+
+            @can('تعديل صلاحية ')
+
+                 <a href="{{route('roles.edit',$role->id)}}" class="btn btn-sm btn-info">
     <i class="fas fa-edit"></i>
+    @endcan
 </a>
 
-<form action="" method="POST" style="display:inline-block;">
+@can( 'حذف صلاحية ')
+
+
+<form action="{{route('roles.destroy',$role->id)}}" method="POST" style="display:inline-block;">
     @csrf
     @method('DELETE')
     <button type="submit" class="btn btn-sm btn-danger" >
@@ -103,6 +115,7 @@
     </button>
 </form>
 
+@endcan
                     </td>
                   </tr>
 
