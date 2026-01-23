@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\User;
+namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class AddCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,8 @@ class UpdateUserRequest extends FormRequest
     {
         return [
 
-                   'name'=>'required',
-                   'email' => 'required|email|unique:users,email,' . $this->user->id,
+         'name' => 'required|unique:categories,name'
 
-                     'password'=>'nullable|min:6',
-
-                       'role'=>'required'
 
         ];
     }

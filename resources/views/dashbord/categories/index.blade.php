@@ -1,7 +1,7 @@
 @extends('dashbord.layouts.master')
 
 @section('title')
-    المستخدمين
+    الاقسام
 @endsection
 
 @section('admin_content')
@@ -12,11 +12,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>بيانات المستخدمين</h1>
+            <h1>بيانات الاقسام</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                 <li class="breadcrumb-item"><a href="">الرئيسية</a></li>
+                  <li class="breadcrumb-item"><a href="">الرئيسية</a></li>
               <li class="breadcrumb-item active">لوحة التحكم</li>
             </ol>
           </div>
@@ -36,17 +36,16 @@
                <div class="card-header">
         <div class="row align-items-center">
 
-
             <!-- زر إضافة منتج -->
             <div class="col-md-3 mb-2 mb-md-0">
-                <a href="{{route('users.create')}}" class="btn btn-primary ">
-                    <i class="fas fa-plus"></i> اضافة مستخدم
+                <a href="{{ route('categories.create') }}" class="btn btn-dark ">
+                    <i class="fas fa-plus"></i> اضافة قسم
                 </a>
             </div>
 
             <!-- فورم البحث -->
-     <div class="col-md-9 d-flex justify-content-end">
-    {{-- <form action="" method="GET" class="d-flex">
+     {{-- <div class="col-md-9 d-flex justify-content-end">
+    <form action="{{ route('categories.index') }}" method="GET" class="d-flex">
         <input type="text" name="search" class="form-control form-control "
                placeholder="ابحث عن منتج ..." value="{{ request('search') }}" >
 
@@ -55,12 +54,12 @@
         </button>
 
         @if(request('search'))
-            <a href="{{route('clients.index')}}" class="btn btn-sm btn-dark me-1">
+            <a href="{{ route('categories.index') }}" class="btn btn-sm btn-dark me-1">
                 <i class="fas fa-times"></i>
             </a>
         @endif
-    </form> --}}
-</div>
+    </form>
+</div> --}}
 
 
         </div>
@@ -69,55 +68,60 @@
 
               @include('dashbord.partials.alerts')
 
+
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover text-center">
                   <thead>
 
                   <tr>
-                    <th>#</th>
-                    <th>اسم المستخدم </th>
-                    <th>   الايميل </th>
-                    <th>   صلاحية المستخدم </th>
-
-                    <th>العمليات</th>
+                    <th class=" ">#</th>
+                    <th class=" ">اسم القسم</th>
+                    <th>عدد  المنتجات </th>
+                    {{-- <th>  المنتجات المرتبطة </th> --}}
+                    <th class=" ">العمليات</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @foreach ($categories as $category )
 
-
-
-                    @foreach ($users as $user )
 
                   <tr>
-                    <td>{{$loop->iteration}} </td>
-                    <td>  {{$user->name}}</td>
-                    <td> {{$user->email }} </td>
-
-                    <td>{{ $user->getRoleNames()->implode(',') }}</td>
-
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{$category->name}}  </td>
+                    <td>{{$category->products->count()}}  </td>
+                    {{-- <td><a href="{{route('products.index',['category_id'=>$category->id])}}" class="btn btn-dark "> المنتجات المرتبطة </a></td> --}}
 
 
-                    <td>
 
-                 <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
+
+                    <td class="d-flex justify-content-center align-items-center gap-2">
+
+                 <a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary text-white">
     <i class="fas fa-edit"></i>
 </a>
 
-<form action="{{route('categories.destroy',$user->id)}}" method="POST" style="display:inline-block;">
+<form action="{{route('categories.destroy',$category->id)}}" method="POST" >
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-danger" >
+    <button type="submit" class="btn btn-danger  text-white" >
         <i class="fas fa-trash"></i>
     </button>
 </form>
 
                     </td>
                   </tr>
-
-                    @endforeach
+  @endforeach
                   </tbody>
 
                 </table>
+
+
+
+                <div class="mt-3">
+
+
+{{ $categories->links('pagination::bootstrap-4') }}
+    </div>
               </div>
               <!-- /.card-body -->
             </div>

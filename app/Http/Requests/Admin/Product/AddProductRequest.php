@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\User;
+namespace App\Http\Requests\Admin\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class AddProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,13 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+                  'name'=>'required',
 
-                   'name'=>'required',
-                   'email' => 'required|email|unique:users,email,' . $this->user->id,
+        'image' => 'nullable|image|mimes:png,jpg,jpeg',
 
-                     'password'=>'nullable|min:6',
+        'price'=>'required',
 
-                       'role'=>'required'
-
+        'category_id'=>'required'
         ];
     }
 }

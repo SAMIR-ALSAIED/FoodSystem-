@@ -51,7 +51,7 @@
         <div class="small-box bg-primary text-white">
           <div class="inner">
             <h3>0</h3>
-            <p> الاصناف</p>
+            <p> الاقسام</p>
           </div>
           <div class="icon">
             <i class="fas fa-layer-group"></i>
@@ -72,11 +72,11 @@
             <p> الطالبات</p>
           </div>
           <div class="icon">
-            <i class="fas fa-layer-group">0</i>
+            <i class="fas fa-layer-group"></i>
 
           </div>
           <a href="" class="small-box-footer text-white">
-            عرض <i class="fas fa-arrow-circle-right">0</i>
+            عرض <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
       </div>

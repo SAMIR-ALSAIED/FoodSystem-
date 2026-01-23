@@ -62,8 +62,9 @@ public function store(AddUserRequest $request){
     {
 
 
+       $roles = Role::all();
 
-        return view('dashbord.users.edit',compact('user'));
+        return view('dashbord.users.edit',compact('user','roles'));
 
     }
 
@@ -82,6 +83,10 @@ public function store(AddUserRequest $request){
         unset($data['password']);
     }
 
+        if (!empty($data['role'])) {
+        $role = Role::find($data['role']);
+        $user->syncRoles([$role->name]);
+    }
 
     $user->update($data);
 

@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('admin')}}/dist/css/pagination.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -190,7 +191,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('dashboard')}}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
 
 
@@ -198,6 +199,101 @@
              الرئيسية
               </p>
             </a>
+          </li>
+
+
+
+                   <li class="nav-item">
+            <a href="{{route('categories.index')}}" class="nav-link">
+
+              <i class="nav-icon fas fa-table"></i>
+              <p> الاقسام </p>
+
+
+            </a>
+          </li>
+
+
+                          <li class="nav-item">
+            <a href="{{route('products.index')}}" class="nav-link">
+
+              <i class="nav-icon fas fa-table"></i>
+              <p> المنتجات </p>
+
+
+            </a>
+          </li>
+
+
+
+
+
+
+                   <li class="nav-item">
+            <a href="" class="nav-link">
+
+              <i class="nav-icon fas fa-table"></i>
+              <p> الطلبات </p>
+
+
+            </a>
+          </li>
+
+
+
+                           <li class="nav-item">
+            <a href="" class="nav-link">
+
+              <i class="nav-icon fas fa-table"></i>
+              <p> الطاولات </p>
+
+
+            </a>
+          </li>
+
+
+
+                  <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                الحجوزات
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> حجوزات الهاتف</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>  إنشاء الطلبات</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                التقارير
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+
+
+
+            </ul>
           </li>
 
 
@@ -251,7 +347,7 @@
             </ul>
           </li>
 
-                    @endcan
+         @endcan
 
 
 
@@ -265,7 +361,7 @@
 <li class="nav-item mt-3">
     <form method="POST" action="{{route('logout')}}">
         @csrf
-        <button type="submit" class="btn btn-secondary btn-block  text-left ">
+        <button type="submit" class="btn btn-dark btn-block  text-white text-left ">
             <i class="fas fa-sign-out-alt me-2  " ></i> تسجيل الخروج
         </button>
     </form>

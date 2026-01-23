@@ -89,6 +89,31 @@
 
 
 
+<div class="col-12">
+    <div class="form-group">
+        <label>الدور</label>
+
+        <select name="role" class="form-control">
+            <option value="">اختر الدور</option>
+
+            @foreach($roles as $role)
+                <option
+                    value="{{ $role->id }}"
+                    {{ old('role', isset($user) ? $user->roles->first()?->id : null) == $role->id ? 'selected' : '' }}
+                >
+                    {{ $role->name }}
+                </option>
+            @endforeach
+        </select>
+
+        @error('role')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
+
+
 
 
                 <button type="submit" class=" btn btn-primary">حفظ  </button>
