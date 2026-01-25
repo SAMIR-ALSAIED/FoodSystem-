@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-                    $table->string('customer_name'); // اسم العميل
-            $table->string('phone');         // رقم الهاتف
-            $table->integer('guest_count');  // عدد الأشخاص
+                    $table->string('customer_name');
+            $table->string('phone');
+            $table->integer('guest_count');
 
             // الطاولة المحجوزة
             $table->foreignId('table_id')->constrained('tables')->onDelete('cascade');
-            $table->enum('status', ['تم الحجز','اكتمل الطلب','ملغي'])->default('تم الحجز');
+
+
+            $table->enum('status', ['في الانتظار', 'تم الحجز', 'اكتمل الطلب', 'ملغي'])
+      ->default('في الانتظار');
+
+
+
             $table->timestamps();
         });
     }

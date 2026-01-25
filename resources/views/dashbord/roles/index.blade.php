@@ -41,12 +41,10 @@
             <!-- زر إضافة منتج -->
             <div class="col-md-3 mb-2 mb-md-0">
 
-            @can('انشاء صلاحية ')
-                <a href="{{route('roles.create')}}" class="btn btn-dark  ">
-                    <i class="fas fa-plus"></i> اضافة صلاحية
-                </a>
-                @endcan
-            </div>
+
+
+
+
 
             <!-- فورم البحث -->
      <div class="col-md-9 d-flex justify-content-end">
@@ -74,6 +72,22 @@
               @include('dashbord.partials.alerts')
 
               <div class="card-body">
+
+
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- زر إضافة منتج -->
+
+
+            @can('انشاء صلاحية ')
+        <a href="{{ route('roles.create') }}" class="btn btn-dark d-inline p-2 me-2">
+            <i class="fas fa-plus"></i> إضافة صلاحية
+        </a>
+        @endcan
+        <!-- زر Excel -->
+        <span id="exportBtnContainer" class="d-inline"></span>
+    </div>
+
                 <table id="example1" class="table table-bordered table-hover text-center">
                   <thead>
 
