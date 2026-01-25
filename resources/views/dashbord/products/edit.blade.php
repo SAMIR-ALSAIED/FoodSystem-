@@ -111,7 +111,7 @@
                 </div>
 
               </div>
-                <button type="submit" class=" btn btn-primary  fw-bold mt-3">تعديل المنتج </button>
+                <button type="submit" class=" btn btn-primary  fw-bold mt-3"> <i class="fas fa-save me-1"></i>تعديل المنتج </button>
 
 
           </div>

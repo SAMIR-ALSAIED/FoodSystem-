@@ -34,13 +34,13 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-primary text-white">
           <div class="inner">
-            <h3> 0</h3>
+            <h3> {{$products_count}}</h3>
             <p>المنتجات </p>
           </div>
           <div class="icon">
             <i class="fas fa-shopping-cart"></i>
           </div>
-          <a href="" class="small-box-footer text-white">
+          <a href="{{route('products.index')}}" class="small-box-footer text-white">
             عرض <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -50,14 +50,14 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-primary text-white">
           <div class="inner">
-            <h3>0</h3>
+            <h3>{{$category_count}}</h3>
             <p> الاقسام</p>
           </div>
           <div class="icon">
             <i class="fas fa-layer-group"></i>
 
           </div>
-          <a href="" class="small-box-footer text-white">
+          <a href="{{route('categories.index')}}" class="small-box-footer text-white">
             عرض <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -84,13 +84,13 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-primary text-white">
           <div class="inner">
-            <h3>0</h3>
+            <h3>{{$users_count}}</h3>
             <p>المستخدمين </p>
           </div>
           <div class="icon">
 <i class="fas fa-user-friends"></i>
           </div>
-          <a href="#" class="small-box-footer text-white">
+          <a href="{{route('users.index')}}" class="small-box-footer text-white">
             عرض <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>

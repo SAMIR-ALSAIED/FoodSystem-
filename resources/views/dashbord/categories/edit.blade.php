@@ -56,7 +56,7 @@
 
 
                     <div class=" text-left">
-                              <button type="submit" class=" btn btn-primary  form-control fw-bold mt-3">تعديل القسم </button>
+                              <button type="submit" class=" btn btn-primary  form-control fw-bold mt-3"> <i class="fas fa-save me-1"></i>تعديل القسم </button>
 
                     </div>
 

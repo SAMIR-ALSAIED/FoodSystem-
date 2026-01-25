@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', [DashboardController::class,'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
@@ -24,6 +25,7 @@ Route::resource('categories', CategoryController::class);
 //
 Route::resource('products', ProductController::class);
 
+   Route::resource('tables', TableController::class);
 
 
 

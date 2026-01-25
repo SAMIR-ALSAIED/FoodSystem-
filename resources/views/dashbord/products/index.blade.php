@@ -41,11 +41,7 @@
         <div class="row align-items-center ">
 
             <!-- زر إضافة منتج -->
-            <div class="col-md-3 mb-2 mb-md-0">
-                <a href="{{route('products.create')}}" class="btn btn-dark  ">
-                    <i class="fas fa-plus"></i> اضافة منتج
-                </a>
-            </div>
+
 
             <!-- فورم البحث -->
      {{-- <div class="col-md-9 d-flex justify-content-end">
@@ -69,12 +65,22 @@
         </div>
     </div>
 
+
               <!-- /.card-header -->
 
 @include('dashbord.partials.alerts')
 
               <div class="card-body">
 
+  <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- زر إضافة منتج -->
+        <a href="{{ route('products.create') }}" class="btn btn-dark d-inline p-2 me-2">
+            <i class="fas fa-plus"></i> إضافة منتج
+        </a>
+
+        <!-- زر Excel -->
+        <span id="exportBtnContainer" class="d-inline"></span>
+    </div>
 
 
                 <table id="example1" class="table table-bordered table-hover text-center">
@@ -83,10 +89,10 @@
                   <tr>
                     <th class=" bg-dark">#</th>
                     <th class=" bg-dark">اسم المنتج</th>
-                    <th class=" bg-dark">صورة المنتج </th>
+                    <th class=" bg-dark no-export" >صورة المنتج </th>
                     <th class=" bg-dark">  السعر  </th>
                     <th class=" bg-dark">  القسم </th>
-                    <th class=" bg-dark">العمليات</th>
+                    <th class=" bg-dark no-export">العمليات</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -132,10 +138,10 @@
 
                 </table>
 
-                <div class="mt-4 float-start">
+                {{-- <div class="mt-4 float-start">
      {{ $products->links('pagination::bootstrap-4') }}
 </div>
-
+ --}}
 
 
               </div>

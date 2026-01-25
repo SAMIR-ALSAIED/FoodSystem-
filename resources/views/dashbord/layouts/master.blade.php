@@ -227,6 +227,15 @@
 
 
 
+                            <li class="nav-item">
+            <a href="{{route('tables.index')}}" class="nav-link">
+
+              <i class="nav-icon fas fa-table"></i>
+              <p> الطاولات </p>
+
+
+            </a>
+          </li>
 
 
                    <li class="nav-item">
@@ -241,15 +250,7 @@
 
 
 
-                           <li class="nav-item">
-            <a href="" class="nav-link">
 
-              <i class="nav-icon fas fa-table"></i>
-              <p> الطاولات </p>
-
-
-            </a>
-          </li>
 
 
 
@@ -430,6 +431,55 @@
 <script src="{{asset('admin')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+
+
+<script>
+$(document).ready(function() {
+    var table = $('#example1').DataTable({
+        "language": {
+            "decimal": "",
+            "emptyTable": "لا توجد بيانات متاحة",
+            "info": "عرض _START_ إلى _END_ من أصل _TOTAL_ سجل",
+            "infoEmpty": "عرض 0 إلى 0 من أصل 0 سجل",
+            "infoFiltered": "(منتقاة من مجموع _MAX_ سجل)",
+            "lengthMenu": "عرض _MENU_ سجلات",
+            "loadingRecords": "جار التحميل...",
+            "processing": "جارٍ المعالجة...",
+            "search": "بحث:",
+            "zeroRecords": "لم يتم العثور على سجلات مطابقة",
+            "paginate": {
+                "first": "الأول",
+                "last": "الأخير",
+                "next": "التالي",
+                "previous": "السابق"
+            }
+        },
+        "paging": true,
+        "pageLength": 5,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "responsive": true,
+        "autoWidth": false,
+        "lengthChange": false,
+        "dom": 'Bfrtip',
+        "buttons": [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel me-1"></i> تصدير Excel',
+                className: 'btn btn-success  shadow-sm',
+                exportOptions: {
+                    columns: ':not(.no-export)'
+                }
+            }
+        ]
+    });
+
+    // وضع زر Excel داخل span
+    table.buttons().container().appendTo('#exportBtnContainer');
+});
+</script>
 
 </body>
 </html>

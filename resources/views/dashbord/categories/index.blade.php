@@ -37,11 +37,7 @@
         <div class="row align-items-center">
 
             <!-- زر إضافة منتج -->
-            <div class="col-md-3 mb-2 mb-md-0">
-                <a href="{{ route('categories.create') }}" class="btn btn-dark ">
-                    <i class="fas fa-plus"></i> اضافة قسم
-                </a>
-            </div>
+
 
             <!-- فورم البحث -->
      {{-- <div class="col-md-9 d-flex justify-content-end">
@@ -70,6 +66,21 @@
 
 
               <div class="card-body">
+
+
+ <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- زر إضافة منتج -->
+        <a href="{{ route('categories.create') }}" class="btn btn-dark d-inline p-2 me-2">
+            <i class="fas fa-plus"></i> إضافة قسم
+        </a>
+
+        <!-- زر Excel -->
+    <span id="exportBtnContainer"></span>
+
+    </div>
+
+
+
                 <table id="example1" class="table table-bordered table-hover text-center">
                   <thead>
 
@@ -116,12 +127,12 @@
                 </table>
 
 
-
+{{--
                 <div class="mt-3">
 
 
 {{ $categories->links('pagination::bootstrap-4') }}
-    </div>
+    </div> --}}
               </div>
               <!-- /.card-body -->
             </div>

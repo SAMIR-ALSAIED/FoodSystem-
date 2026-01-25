@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $categories=Category::paginate(4);
+        $categories=Category::all();
 
     //         $search = $request->input('search');
 

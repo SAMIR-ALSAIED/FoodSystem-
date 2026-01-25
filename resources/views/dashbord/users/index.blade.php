@@ -38,11 +38,7 @@
 
 
             <!-- زر إضافة منتج -->
-            <div class="col-md-3 mb-2 mb-md-0">
-                <a href="{{route('users.create')}}" class="btn btn-primary ">
-                    <i class="fas fa-plus"></i> اضافة مستخدم
-                </a>
-            </div>
+
 
             <!-- فورم البحث -->
      <div class="col-md-9 d-flex justify-content-end">
@@ -70,6 +66,17 @@
               @include('dashbord.partials.alerts')
 
               <div class="card-body">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- زر إضافة منتج -->
+        <a href="{{route('users.create')}}" class="btn btn-dark d-inline p-2 me-2">
+            <i class="fas fa-plus"></i> اضافة مستخدم
+        </a>
+
+        <!-- زر Excel -->
+        <span id="exportBtnContainer" class="d-inline"></span>
+    </div>
+
                 <table id="example1" class="table table-bordered table-hover text-center">
                   <thead>
 
@@ -99,14 +106,14 @@
 
                     <td>
 
-                 <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-info">
+                 <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary">
     <i class="fas fa-edit"></i>
 </a>
 
 <form action="{{route('categories.destroy',$user->id)}}" method="POST" style="display:inline-block;">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-danger" >
+    <button type="submit" class="btn  btn-danger" >
         <i class="fas fa-trash"></i>
     </button>
 </form>

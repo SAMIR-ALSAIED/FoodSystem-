@@ -42,7 +42,7 @@
             <div class="col-md-3 mb-2 mb-md-0">
 
             @can('انشاء صلاحية ')
-                <a href="{{route('roles.create')}}" class="btn btn-primary ">
+                <a href="{{route('roles.create')}}" class="btn btn-dark  ">
                     <i class="fas fa-plus"></i> اضافة صلاحية
                 </a>
                 @endcan
@@ -99,7 +99,7 @@
 
             @can('تعديل صلاحية ')
 
-                 <a href="{{route('roles.edit',$role->id)}}" class="btn btn-sm btn-info">
+                 <a href="{{route('roles.edit',$role->id)}}" class="btn btn-primary">
     <i class="fas fa-edit"></i>
     @endcan
 </a>
@@ -110,7 +110,7 @@
 <form action="{{route('roles.destroy',$role->id)}}" method="POST" style="display:inline-block;">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-danger" >
+    <button type="submit" class="btn btn-danger" >
         <i class="fas fa-trash"></i>
     </button>
 </form>

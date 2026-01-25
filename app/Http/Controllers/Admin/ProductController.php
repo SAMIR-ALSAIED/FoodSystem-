@@ -14,19 +14,8 @@ class ProductController extends Controller
 
 public function index()
 {
-    $products = Product::paginate(2);
-//         ->when($request->category_id, function($query, $category_id) {
-//             $query->where('category_id', $category_id);
-//         })
-//         ->when($request->search, function($query, $search) {
-//             $query->where(function($q) use ($search) {
-//                 $q->where('name', 'LIKE', "%{$search}%")
-//                   ->orWhereHas('category', function($q2) use ($search) {
-//                       $q2->where('name', 'LIKE', "%{$search}%");
-//                   });
-//             });
-//         })
-//  ->paginate(5);
+    $products = Product::all();
+
     return view('dashbord.products.index', compact('products'));
 }
 
