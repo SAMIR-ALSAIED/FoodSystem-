@@ -15,7 +15,7 @@ class TableController extends Controller
      */
     public function index()
     {
-         $tables = Table::paginate(6);
+         $tables = Table::all();
         return view('dashbord.tables.index', compact('tables'));
     }
 

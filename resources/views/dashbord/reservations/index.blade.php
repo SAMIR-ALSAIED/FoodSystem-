@@ -56,6 +56,7 @@
                                         <th>عدد الأشخاص</th>
                                         <th>الطاولة</th>
                                         <th>الحالة</th>
+                                        <th>تاريخ الحجز</th>
                                         <th>العمليات</th>
                                     </tr>
                                 </thead>
@@ -67,11 +68,15 @@
                                         <td>{{ $reservation->phone }}</td>
                                         <td>{{ $reservation->guest_count }}</td>
                                         <td>{{ $reservation->table->number ?? '-' }}</td>
+
 <td>
     <span class="badge {{ $reservation->statusBadge['badge'] }} text-white  px-3 py-2 rounded-3">
         {{ $reservation->statusBadge['text'] }}
     </span>
 </td>
+
+
+<td>{{ \Carbon\Carbon::now('Africa/Cairo')->format('Y-m-d h:i A') }}</td>
 
 
 

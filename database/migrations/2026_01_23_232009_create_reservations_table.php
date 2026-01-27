@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->id();
+                     $table->id();
                     $table->string('customer_name');
             $table->string('phone');
             $table->integer('guest_count');
@@ -20,12 +20,8 @@ return new class extends Migration
             // الطاولة المحجوزة
             $table->foreignId('table_id')->constrained('tables')->onDelete('cascade');
 
-
-            $table->enum('status', ['في الانتظار', 'تم الحجز', 'اكتمل الطلب', 'ملغي'])
-      ->default('في الانتظار');
-
-
-
+            $table->enum('status', ['في الانتظار', 'تم الحجز', 'اكتمل الطلب', 'ملغي'])->default('في الانتظار');
+             $table->dateTime('datetime');
             $table->timestamps();
         });
     }

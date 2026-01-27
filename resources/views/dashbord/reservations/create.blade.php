@@ -61,6 +61,27 @@
                             @enderror
                         </div>
 
+
+                        <!-- Reservation Date & Time -->
+<div class="form-group mb-3">
+    <label for="datetime" class="font-weight-bold">تاريخ ووقت الحجز</label>
+    <input
+        type="datetime-local"
+        name="datetime"
+        class="form-control"
+        value="{{ old('datetime') }}"
+    >
+
+    @error('datetime')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
+
+
+
+
+
+
                         <!-- Table Selection -->
                         <div class="form-group mb-3">
                             <label for="table_id" class="font-weight-bold">الطاولة</label>

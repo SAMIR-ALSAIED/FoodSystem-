@@ -65,6 +65,20 @@
                             @enderror
                         </div>
 
+
+<div class="form-group mb-3">
+    <label class="font-weight-bold">تاريخ ووقت الحجز</label>
+    <input type="datetime-local" name="datetime" class="form-control"
+       value="{{ old('datetime', \Carbon\Carbon::parse($reservation->datetime)->format('Y-m-d\TH:i')) }}">
+    @error('datetime')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
+
+
+
+
+
                         <!-- Table -->
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">الطاولة</label>

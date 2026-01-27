@@ -72,9 +72,9 @@
                 </div>
                 @endforeach
             </div>
-               <div class="mt-4 float-start">
+               {{-- <div class="mt-4 float-start">
      {{ $tables->links('pagination::bootstrap-4') }}
-</div>
+</div> --}}
 
         </div>
     </section>

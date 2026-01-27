@@ -6,6 +6,8 @@ use App\Models\Table;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Reservation\AddReservationRequest;
+use App\Http\Requests\Admin\Reservation\UpdateReservationRequest;
 
 class ReservationController extends Controller
 {
@@ -19,16 +21,11 @@ class ReservationController extends Controller
         return view('dashbord.reservations.create', compact('tables'));
     }
 
-    public function store(Request $request) {
-        $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'guest_count' => 'required|integer|min:1',
-            'table_id' => 'required|exists:tables,id',
-            'status' => 'required',
-        ]);
+    public function store(AddReservationRequest $request) {
 
-        Reservation::create($request->all());
+        $data=$request->validated();
+
+        Reservation::create( $data);
 
         return redirect()->route('reservations.index')->with('success', 'تم إضافة الحجز بنجاح');
     }
@@ -39,16 +36,10 @@ class ReservationController extends Controller
         return view('dashbord.reservations.edit', compact('reservation', 'tables'));
     }
 
-    public function update(Request $request, Reservation $reservation) {
-        $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'guest_count' => 'required|integer|min:1',
-            'table_id' => 'required|exists:tables,id',
-            'status' => 'required',
-        ]);
+    public function update(UpdateReservationRequest $request, Reservation $reservation) {
+       $data= $request->validated();
 
-        $reservation->update($request->all());
+        $reservation->update($data);
         return redirect()->route('reservations.index')->with('success', 'تم تعديل الحجز بنجاح');
     }
 
