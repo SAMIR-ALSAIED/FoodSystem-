@@ -62,7 +62,8 @@
     </div>
               <!-- /.card-header -->
 
-              @include('dashbord.partials.alerts')
+
+
 
 
               <div class="card-body">
@@ -81,9 +82,11 @@
 
 
 
+
+
                 <table id="example1" class="table table-bordered table-hover text-center">
                   <thead>
-
+        @include('dashbord.partials.alerts')
                   <tr>
                     <th class=" ">#</th>
                     <th class=" ">اسم القسم</th>

@@ -1,0 +1,15 @@
+body { font-family: 'Cairo', sans-serif; background: #f2f2f2; margin:0; }
+header { background: #0d6efd; color: #fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; border-radius:0 0 10px 10px; }
+header h1 { font-size:1.5rem; margin:0; }
+#current-time { font-size:1rem; font-weight:500; }
+.category-btn { margin-bottom:5px; font-weight:500; }
+.category-btn.active { background-color:#0d6efd; color:#fff; border-color:#0d6efd; }
+.product-card { cursor:pointer; border-radius:10px; overflow:hidden; border:1px solid #ddd; transition: all 0.2s; height:120px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:#fff; }
+.product-card:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.2); }
+.product-card h6 { font-weight:600; margin-bottom:5px; }
+.product-card p { font-weight:700; color:#0d6efd; margin:0; }
+#order-panel { background:#fff; border-radius:10px; padding:15px; height:100%; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+#order-table tbody { max-height:250px; overflow-y:auto; display:block; }
+#order-table thead, #order-table tbody tr { display:table; width:100%; table-layout:fixed; }
+#order-table input { width:60px; margin:auto; }
+.btn-large { font-size:1rem; padding:10px 0; }

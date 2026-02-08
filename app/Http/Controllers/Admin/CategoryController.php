@@ -73,7 +73,7 @@ class CategoryController extends Controller
 
            $category->update($data);
 
-            return Redirect()->route('categories.index')->with('update', 'تم تعديل البيانات بنجاح');
+            return Redirect()->route('categories.index')->with('warning', 'تم تعديل البيانات بنجاح');
 
     }
 

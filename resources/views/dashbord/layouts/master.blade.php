@@ -53,12 +53,13 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+    <a href="#" class="nav-link  font-weight-bold" style="font-size: 14px;">
+        <i class="far fa-clock mr-1"></i> <span id="currentTime"></span>
+    </a>
+</li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -240,7 +241,7 @@ $(document).ready(function() {
             }
         },
         "paging": true,
-        "pageLength": 5,
+        "pageLength": 12,
         "searching": true,
         "ordering": true,
         "info": true,
@@ -263,6 +264,33 @@ $(document).ready(function() {
     // وضع زر Excel داخل span
     table.buttons().container().appendTo('#exportBtnContainer');
 });
+
+function updateTime() {
+    const now = new Date();
+
+    // إعدادات التنسيق بالعربي
+    const options = {
+        weekday: 'long',  // السبت، الأحد ...
+        year: 'numeric',  // 2026
+        month: 'long',    // فبراير
+        day: '2-digit',   // 08
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false     // 24 ساعة
+    };
+
+    // تحويل التاريخ للغة العربية
+    const arabicDate = new Intl.DateTimeFormat('ar-EG', options).format(now);
+
+    document.getElementById('currentTime').textContent = arabicDate;
+}
+
+// تحديث الوقت كل ثانية
+setInterval(updateTime, 1000);
+updateTime();
+
+
 </script>
 
 </body>

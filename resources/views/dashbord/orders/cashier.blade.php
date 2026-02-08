@@ -3,46 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شاشة الكاشير </title>
+<title>شاشة الكاشير</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<style>
-body { font-family: 'Cairo', sans-serif; background: #f2f2f2; margin:0; }
-header { background: #0d6efd; color: #fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; border-radius:0 0 10px 10px; }
-header h1 { font-size:1.5rem; margin:0; }
-#current-time { font-size:1rem; font-weight:500; }
-.category-btn { margin-bottom:5px; font-weight:500; }
-.category-btn.active { background-color:#0d6efd; color:#fff; border-color:#0d6efd; }
-.product-card { cursor:pointer; border-radius:10px; overflow:hidden; border:1px solid #ddd; transition: all 0.2s; height:120px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:#fff; }
-.product-card:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.2); }
-.product-card h6 { font-weight:600; margin-bottom:5px; }
-.product-card p { font-weight:700; color:#0d6efd; margin:0; }
-#order-panel { background:#fff; border-radius:10px; padding:15px; height:100%; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-#order-table tbody { max-height:250px; overflow-y:auto; display:block; }
-#order-table thead, #order-table tbody tr { display:table; width:100%; table-layout:fixed; }
-#order-table input { width:60px; margin:auto; }
-.btn-large { font-size:1rem; padding:10px 0; }
-</style>
+<link rel="stylesheet" href="{{asset('admin')}}/dist/css/cashier.css">
 </head>
 <body>
 
-<header class="d-flex justify-content-between align-items-center">
+<header class="d-flex justify-content-between align-items-center bg-dark">
     <div>
         <h1>شاشة الكاشير</h1>
         <div id="current-time" style="font-size:0.9rem; font-weight:500;"></div>
     </div>
-    <div>
-        <a href="{{ route('dashboard') }}" class="btn btn-light text-primary border">
-            <i class="bi bi-house-door-fill"></i> الصفحة الرئيسية
-        </a>
+    <div class="text-center">
+        <h5 class="  text-white p-2">
+            اسم الكاشير: {{ auth()->user()->name }}
+        </h5>
+        <div>
+            <a href="{{ route('dashboard') }}" class="btn btn-info text-white border">
+                <i class="bi bi-house-door-fill"></i> الصفحة الرئيسية
+            </a>
+        </div>
     </div>
 </header>
 
+@include('dashbord.partials.alerts')
 
 <div class="container-fluid mt-3">
     <div class="row g-3">
-        <!-- اللوحة الجانبية للأقسام -->
+        <!-- الأقسام -->
         <div class="col-lg-2 d-flex flex-column gap-2">
             <button class="btn btn-outline-primary category-btn active" data-category="">جميع الأقسام</button>
             @foreach($categories as $category)
@@ -50,7 +40,7 @@ header h1 { font-size:1.5rem; margin:0; }
             @endforeach
         </div>
 
-        <!-- شبكة المنتجات -->
+        <!-- المنتجات -->
         <div class="col-lg-6">
             <div class="row g-2" id="products-grid">
                 @foreach($products as $product)
@@ -62,51 +52,117 @@ header h1 { font-size:1.5rem; margin:0; }
             </div>
         </div>
 
-        <!-- لوحة الطلبات -->
-        <div class="col-lg-4">
-            <div id="order-panel">
-                <div>
-                    <h5>الطلب الحالي (<span id="item-count">0</span>)</h5>
-                    <div class="mb-3">
-                        <label>اختر الطاولة (اختياري):</label>
-                        <select id="table-select" class="form-select">
-                            <option value="">بدون طاولة</option>
-                            @foreach($tables as $table)
-                                <option value="{{ $table->id }}">{{ $table->number }} ({{ $table->min_guests }}-{{ $table->max_guests }} أشخاص)</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div style="max-height:250px; overflow-y:auto;">
-                        <table class="table table-sm text-center" id="order-table">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>المنتج</th>
-                                    <th>الكمية</th>
-                                    <th>السعر</th>
-                                    <th>حذف</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-end mt-2">الإجمالي: <span id="order-total">0</span> ج</h5>
-                    <div class="d-flex gap-2 mt-2">
-                        <button class="btn btn-danger flex-fill btn-large" id="clear-order">حذف الكل</button>
-                        <button class="btn btn-success flex-fill btn-large" id="submit-order">إرسال الطلب</button>
-                        <button class="btn btn-secondary flex-fill btn-large" id="print-invoice">طباعة الفاتورة</button>
-                    </div>
+        <!-- الطلبات -->
+     <div class="col-lg-4 h-75">
+    <div id="order-panel" class="p-3 bg-white rounded shadow-sm d-flex flex-column h-100">
+
+        <!-- عنوان الطلب الحالي -->
+        <div class="mb-3">
+            <h5 class="fw-bold">الطلب الحالي (<span id="item-count">0</span>)</h5>
+        </div>
+
+        <!-- اختيار الطاولة -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold">اختر الطاولة (اختياري):</label>
+            <select id="table-select" class="form-select">
+                <option value="">بدون طاولة</option>
+                @foreach($tables as $table)
+                    <option value="{{ $table->id }}">{{ $table->number }} ({{ $table->min_guests }}-{{ $table->max_guests }} أشخاص)</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- جدول الطلبات -->
+        <div class="flex-fill mb-3" style="overflow-y:auto; max-height:250px;">
+            <table class="table table-sm table-striped text-center align-middle" id="order-table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>المنتج</th>
+                        <th>الكمية</th>
+                        <th>السعر</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- المبالغ -->
+        <div class="mb-3">
+           <!-- الإجمالي -->
+    <div class="card text-white mb-2 bg-primary">
+        <div class="card-body d-flex justify-content-between align-items-center py-3 px-3">
+            <div>
+                <small class="text-white-50 h6">الإجمالي</small>
+                <h5 id="order-total" class="mb-0 fw-bold">0 ج</h5>
+            </div>
+            <i class="bi bi-cash-stack fs-2 opacity-75"></i>
+        </div>
+    </div>
+
+<div class="row g-2 mb-2">
+
+    <!-- المدفوع -->
+    <div class="col-6">
+        <div class="card shadow-sm border-0 bg-success bg-gradient text-white">
+            <div class="card-body d-flex align-items-center gap-2 p-2">
+                <span class="fs-5">
+                    <i class="bi bi-wallet2"></i>
+                </span>
+                <div class="flex-fill">
+                    <label class="form-label fw-semibold mb-1">المبلغ المدفوع</label>
+                    <input type="number" min="0" step="0.01" id="paid-amount" class="form-control form-control-sm text-end fw-bold bg-white text-dark" value="0">
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- المتبقي -->
+    <div class="col-6">
+        <div class="card shadow-sm border-0 bg-danger bg-gradient text-white">
+            <div class="card-body d-flex align-items-center gap-2 p-2">
+                <span class="fs-5">
+                    <i class="bi bi-exclamation-triangle"></i>
+                </span>
+                <div class="flex-fill">
+                    <label class="form-label fw-semibold mb-1">المتبقي</label>
+                    <input type="number" id="remaining-amount" class="form-control form-control-sm text-end fw-bold bg-white text-dark" value="0" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+            </div>
+
+            <!-- الأزرار -->
+            <div class="d-flex gap-2 mt-2">
+                <button class="btn btn-danger flex-fill btn-sm" id="clear-order">
+                    <i class="bi bi-trash"></i> حذف الكل
+                </button>
+                <button class="btn btn-success flex-fill btn-sm" id="submit-order">
+                    <i class="bi bi-send"></i> إرسال الطلب
+                </button>
+                <button class="btn btn-secondary flex-fill btn-sm" id="print-invoice">
+                    <i class="bi bi-printer"></i> طباعة الفاتورة
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
     </div>
 </div>
 
 <div id="invoice"></div>
 
 <script>
-// الوقت الحالي مباشر
+// الوقت الحالي
 function updateTime(){
     const now = new Date();
     const options = {weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit'};
@@ -116,7 +172,17 @@ setInterval(updateTime, 1000);
 updateTime();
 
 let orderItems = [];
+const paidInput = document.getElementById('paid-amount');
+const remainingInput = document.getElementById('remaining-amount');
 
+function updateRemaining() {
+    const total = parseFloat(document.getElementById('order-total').innerText) || 0;
+    const paid = parseFloat(paidInput.value) || 0;
+    const remaining = total - paid;
+    remainingInput.value = remaining.toFixed(2);
+}
+
+// عرض الطلب
 function renderOrder(){
     const tbody = document.querySelector('#order-table tbody');
     tbody.innerHTML = '';
@@ -135,9 +201,15 @@ function renderOrder(){
     document.getElementById('order-total').innerText = total.toFixed(2);
     document.getElementById('item-count').innerText = orderItems.length;
 
+    updateRemaining();
+
     document.querySelectorAll('.remove-item').forEach(btn=>{
-        btn.addEventListener('click',()=>{ orderItems.splice(btn.dataset.index,1); renderOrder(); });
+        btn.addEventListener('click',()=>{
+            orderItems.splice(btn.dataset.index,1);
+            renderOrder();
+        });
     });
+
     document.querySelectorAll('.qty-input').forEach(input=>{
         input.addEventListener('input',()=>{
             let value = parseInt(input.value);
@@ -174,24 +246,35 @@ document.querySelectorAll('.category-btn').forEach(btn=>{
 
 // حذف كل الطلب
 document.getElementById('clear-order').addEventListener('click',()=>{
-    if(confirm('هل تريد حذف كل العناصر؟')){ orderItems=[]; renderOrder(); }
+    if(confirm('هل تريد حذف كل العناصر؟')){
+        orderItems=[];
+        renderOrder();
+        paidInput.value = 0;
+        updateRemaining();
+    }
 });
 
-// إرسال الطلب
+// إرسال الطلب للمطبخ
 document.getElementById('submit-order').addEventListener('click',()=>{
-    const tableId=document.getElementById('table-select').value || null;
     if(orderItems.length===0){ alert('أضف منتجات للطلب!'); return; }
+
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    const form=document.createElement('form');
-    form.method='POST';
-    form.action="{{ route('orders.cashier.store') }}";
-    form.innerHTML=`<input type="hidden" name="_token" value="${token}">`;
-    if(tableId) form.innerHTML+=`<input type="hidden" name="table_id" value="${tableId}">`;
+    const tableId = document.getElementById('table-select').value || null;
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = "{{ route('orders.cashier.store') }}";
+    form.innerHTML = `<input type="hidden" name="_token" value="${token}">`;
+    if(tableId) form.innerHTML += `<input type="hidden" name="table_id" value="${tableId}">`;
+    form.innerHTML += `<input type="hidden" name="paid_amount" value="${paidInput.value}">`;
+    form.innerHTML += `<input type="hidden" name="remaining_amount" value="${remainingInput.value}">`;
+
     orderItems.forEach((item,index)=>{
-        form.innerHTML+=`<input type="hidden" name="items[${index}][product_id]" value="${item.id}">`;
-        form.innerHTML+=`<input type="hidden" name="items[${index}][quantity]" value="${item.quantity}">`;
-        form.innerHTML+=`<input type="hidden" name="items[${index}][price]" value="${item.price}">`;
+        form.innerHTML += `<input type="hidden" name="items[${index}][product_id]" value="${item.id}">`;
+        form.innerHTML += `<input type="hidden" name="items[${index}][quantity]" value="${item.quantity}">`;
+        form.innerHTML += `<input type="hidden" name="items[${index}][price]" value="${item.price}">`;
     });
+
     document.body.appendChild(form);
     form.submit();
 });
@@ -234,15 +317,12 @@ document.getElementById('print-invoice').addEventListener('click', () => {
     </head>
     <body>
         <div class="header">
-            <h2> مطعم الذواقة</h2>
-
+            <h2>مطعم </h2>
             <p>فاتورة الطلب</p>
             <p>${invoiceDate}</p>
-
         </div>
 
         <p><strong>الكاشير:</strong> {{ auth()->user()->name }}</p>
-
 
         <table>
             <thead>
@@ -258,9 +338,10 @@ document.getElementById('print-invoice').addEventListener('click', () => {
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" style="text-align:right;">الإجمالي الكلي</td>
+                    <td colspan="3" style="text-align:right;">الإجمالي </td>
                     <td style="text-align:right;">${total.toFixed(2)} ج</td>
                 </tr>
+
             </tfoot>
         </table>
 
@@ -275,7 +356,17 @@ document.getElementById('print-invoice').addEventListener('click', () => {
     printWindow.focus();
     printWindow.print();
 });
+
+paidInput.addEventListener('input', updateRemaining);
 </script>
 
+           {{-- <tr>
+               <td colspan="3" style="text-align:right;">المبلغ المدفوع</td>
+                  <td style="text-align:right;">${paidInput.value} ج</td>
+               </tr>
+               <tr>
+                  <td colspan="3" style="text-align:right;">المتبقي</td>
+                  <td style="text-align:right;">${remainingInput.value} ج</td>
+                 </tr> --}}
 </body>
 </html>
