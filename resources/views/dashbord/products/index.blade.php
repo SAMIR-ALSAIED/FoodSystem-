@@ -106,8 +106,12 @@
                     <td>{{ $loop->iteration }}</td>
                     <td> {{ $product->name}} </td>
 
-<td><img src="{{ asset('images/' . $product->image) }}" width="80"></td>
+{{-- <td><img src="{{ asset('images/' . $product->image) }}" width="80"></td> --}}
+<td>
 
+
+                            <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/default.jpg')  }} " width="80">
+</td>
 
                     <td> {{ $product->price}} </td>
 

@@ -110,7 +110,7 @@
     <i class="fas fa-edit"></i>
 </a>
 
-<form action="{{route('categories.destroy',$user->id)}}" method="POST" style="display:inline-block;">
+<form action="{{route('users.destroy',$user->id)}}" method="POST" style="display:inline-block;">
     @csrf
     @method('DELETE')
     <button type="submit" class="btn  btn-danger" >

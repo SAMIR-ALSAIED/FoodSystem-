@@ -33,7 +33,10 @@ public function store(AddRoleRequest $request){
 
    $data = $request->validated();
 
-$role = Role::create(['name' => $request->name]);
+$role = Role::firstOrCreate([
+    'name' => $data['name'],
+    'guard_name' => 'web',
+]);
 
  $permissions = Permission::find($request->permissions);
     $role->syncPermissions( $permissions);
@@ -55,6 +58,9 @@ public function update(UpdateRoleRequest $request, Role $role){
 
  $data = $request->validated();
 
+      $role->update([
+            'name' => $data['name'],
+        ]);
      $permissions = Permission::find($data['permissions']);
     $role->syncPermissions($permissions);
 

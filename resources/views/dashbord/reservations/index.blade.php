@@ -37,10 +37,15 @@
 
                              <div class="d-flex justify-content-between align-items-center mb-3">
         <!-- زر إضافة منتج -->
+
+        @can( 'اضافة حجوزات')
+
+
         <a href="{{ route('reservations.create') }}" class="btn btn-dark d-inline p-2 me-2">
              <i class="fas fa-plus"></i> إضافة حجز جديد
         </a>
 
+              @endcan
         <!-- زر Excel -->
     <span id="exportBtnContainer"></span>
 
@@ -83,15 +88,26 @@
 
 
                                         <td class="d-flex justify-content-center align-items-center gap-2">
+
+                                                @can( 'تعديل حجوزات')
+
+
+
                                             <a href="{{ route('reservations.edit', $reservation->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                             @endcan
                                             <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
+                                                @can('حذف حجوزات')
+
+
                                                 <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
+
+                                                     @endcan
                                             </form>
                                         </td>
                                     </tr>

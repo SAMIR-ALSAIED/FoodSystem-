@@ -27,9 +27,15 @@
 
             <!-- زر إضافة طاولة -->
             <div class="d-flex justify-content-between mb-3">
+                @can( 'اضافة طاولات')
+
+
                 <a href="{{route('tables.create')}}" class="btn btn-dark">
                     <i class="fas fa-plus"></i> إضافة طاولة
                 </a>
+
+                @endcan
+
             </div>
 
             <!-- عرض الطاولات -->
@@ -55,16 +61,25 @@
 
                             <!-- الأزرار -->
                             <div class="d-flex  gap-2">
+                                @can( 'تعديل طاولات')
+
+
                                 <a href="{{ route('tables.edit', $table->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-edit  "></i>
                                 </a>
-
+                                 @endcan
                                 <form action="{{ route('tables.destroy', $table->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف الطاولة؟')">
                                     @csrf
                                     @method('DELETE')
+
+                                    @can('حذف طاولات')
+
+
                                     <button type="submit" class="btn btn-sm btn-danger">
                                         <i class="fas fa-trash "></i>
                                     </button>
+
+                                         @endcan
                                 </form>
                             </div>
                         </div>

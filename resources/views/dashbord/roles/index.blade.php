@@ -79,11 +79,11 @@
         <!-- زر إضافة منتج -->
 
 
-            @can('انشاء صلاحية ')
+
         <a href="{{ route('roles.create') }}" class="btn btn-dark d-inline p-2 me-2">
             <i class="fas fa-plus"></i> إضافة صلاحية
         </a>
-        @endcan
+
         <!-- زر Excel -->
         <span id="exportBtnContainer" class="d-inline"></span>
     </div>
@@ -111,14 +111,14 @@
                     <td>
 
 
-            @can('تعديل صلاحية ')
+
 
                  <a href="{{route('roles.edit',$role->id)}}" class="btn btn-primary">
     <i class="fas fa-edit"></i>
-    @endcan
+
 </a>
 
-@can( 'حذف صلاحية ')
+
 
 
 <form action="{{route('roles.destroy',$role->id)}}" method="POST" style="display:inline-block;">
@@ -129,7 +129,7 @@
     </button>
 </form>
 
-@endcan
+
                     </td>
                   </tr>
 

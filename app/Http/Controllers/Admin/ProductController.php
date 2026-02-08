@@ -47,6 +47,11 @@ if ($request->hasFile('image')) {
     $data['image'] = $imageName;
 }
 
+else {
+    // لو مفيش صورة تم رفعها، استخدم الصورة الافتراضية
+    $data['image'] = 'default.jpg';
+}
+
 
         Product::create($data);
 

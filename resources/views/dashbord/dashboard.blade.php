@@ -68,14 +68,14 @@
   <div class="col-lg-3 col-6">
         <div class="small-box bg-primary text-white">
           <div class="inner">
-            <h3>0</h3>
+            <h3>{{ $orders_count }}</h3>
             <p> الطالبات</p>
           </div>
           <div class="icon">
             <i class="fas fa-layer-group"></i>
 
           </div>
-          <a href="" class="small-box-footer text-white">
+          <a href="{{ route('orders.index') }}" class="small-box-footer text-white">
             عرض <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>

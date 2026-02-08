@@ -57,24 +57,30 @@
 <div class="col-12 ">
     <label>الصلاحيات</label>
     <div class="">
+<div class="row">
+    @foreach($permissions as $permission)
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card shadow-sm border-0 p-2">
+                <div class="form-check form-switch">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           name="permissions[]"
+                           value="{{ $permission->id }}"
+                           id="perm{{ $permission->id }}"
+                           {{ isset($role) && $role->permissions->pluck('id')->contains($permission->id) ? 'checked' : '' }}>
 
+                    <label class="form-check-label fw-semibold"
+                           for="perm{{ $permission->id }}">
 
-    <div class="form-group ">
- @foreach($permissions as $per)
-                <div class="form-check card p-3 shadow-sm ">
-                    <input class="form-check-input me-2 "
-       type="checkbox"
-       name="permissions[]"
-       value="{{ $per->name }}"
-       id="perm{{ $per->name}}"
-       {{ $role->permissions->contains($per->id) ? 'checked' : '' }}>
-
-                    <label class="form-check-label" for="perm{{ $per->name }}">
-                        {{ $per->name }}
+                        {{ $permission->name }}
                     </label>
                 </div>
-            @endforeach
-    </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+
 </div>
 
 
@@ -88,7 +94,7 @@
 
 
 
-                <button type="submit" class=" btn btn-primary">حفظ  </button>
+                <button type="submit" class=" btn btn-primary ">حفظ  </button>
 
               </div>
 

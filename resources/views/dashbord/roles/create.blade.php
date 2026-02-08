@@ -58,16 +58,25 @@
     <label>الصلاحيات</label>
     <div class="">
 
+<div class="row">
+    @foreach($permissions as $permission)
+        <div class="col-md-3 col-sm-6 mb-2">
+            <div class="form-check form-switch">
+                <input class="form-check-input"
+                       type="checkbox"
+                       name="permissions[]"
+                       value="{{ $permission->id }}"
+                       id="perm{{ $permission->id }}"
+                       {{ isset($role) && $role->permissions->pluck('id')->contains($permission->id) ? 'checked' : '' }}>
 
-    <div class="form-group ">
-        @foreach($permissions as $permission)
-            <div class="form-check ">
-                <input type="checkbox" class="form-check-input " name="permissions[]" value="{{ $permission->id }}"
-                    {{ (isset($role) && $role->permissions->pluck('id')->contains($permission->id)) ? 'checked' : '' }}>
-                <label class="form-check-label">{{ $permission->name }}</label>
+                <label class="form-check-label" for="perm{{ $permission->id }}">
+                    {{ $permission->name }}
+                </label>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
+
 </div>
 
 
@@ -79,7 +88,9 @@
 
 
 
-                <button type="submit" class=" btn btn-primary">حفظ  </button>
+
+
+                <button type="submit" class=" btn btn-primary mt-3">حفظ  </button>
 
               </div>
 

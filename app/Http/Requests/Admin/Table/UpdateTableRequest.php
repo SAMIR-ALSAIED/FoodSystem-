@@ -23,7 +23,7 @@ class UpdateTableRequest extends FormRequest
     {
         return [
 
-    'number'=> 'required|unique:tables,number',
+    'number'=> 'required',
     'min_guests' => 'required|integer|min:1',
     'max_guests' => 'required|integer',
     'status'     => 'required',
