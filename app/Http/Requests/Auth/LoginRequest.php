@@ -30,13 +30,32 @@ class LoginRequest extends FormRequest
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ];
+
+
     }
+
 
     /**
      * Attempt to authenticate the request's credentials.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
+public function messages(): array
+    {
+        return [
+            'email.required' => 'حقل البريد الإلكتروني مطلوب.',
+            'email.email' => 'يجب أن يكون البريد الإلكتروني صالحاً.',
+            'password.required' => 'حقل كلمة السر مطلوب.',
+            'password.string' => 'حقل كلمة السر يجب أن يكون نصاً.',
+        ];
+    }
+
+
+
+
+
+
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
@@ -45,7 +64,9 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                // 'email' => trans('auth.failed'),
+                        'email' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة. حاول مرة أخرى.',
+
             ]);
         }
 

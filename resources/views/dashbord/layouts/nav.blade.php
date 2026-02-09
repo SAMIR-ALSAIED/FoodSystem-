@@ -1,10 +1,18 @@
 <!-- Main Sidebar Container -->
+
+<style>
+    .nav-sidebar .nav-link.active {
+    background-color: #6d7174 !important; /* اللون الأزرق AdminLTE */
+    color: #fff !important;
+}
+</style>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-        <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
-             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">سيستم مطاعم</span>
+        <img src="{{ asset('admin/dist/img/logo.png') }}" alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-1" style="opacity: .8">
+        <span class="brand-text font-weight-light">إدارة المطعم</span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +20,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('admin/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('admin/dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -26,7 +34,7 @@
 
                 <!-- الرئيسية -->
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>الرئيسية</p>
                     </a>
@@ -35,7 +43,7 @@
                 <!-- الأقسام -->
                 @can('الاقسام')
                 <li class="nav-item">
-                    <a href="{{route('categories.index')}}" class="nav-link">
+                    <a href="{{ route('categories.index') }}" class="nav-link {{ Route::currentRouteName() == 'categories.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-layer-group"></i>
                         <p>الأقسام</p>
                     </a>
@@ -45,7 +53,7 @@
                 <!-- المنتجات -->
                 @can('المنتجات')
                 <li class="nav-item">
-                    <a href="{{route('products.index')}}" class="nav-link">
+                    <a href="{{ route('products.index') }}" class="nav-link {{ Route::currentRouteName() == 'products.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-box-open"></i>
                         <p>المنتجات</p>
                     </a>
@@ -55,7 +63,7 @@
                 <!-- الطاولات -->
                 @can('الطاولات')
                 <li class="nav-item">
-                    <a href="{{route('tables.index')}}" class="nav-link">
+                    <a href="{{ route('tables.index') }}" class="nav-link {{ Route::currentRouteName() == 'tables.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-chair"></i>
                         <p>الطاولات</p>
                     </a>
@@ -65,7 +73,7 @@
                 <!-- الحجوزات -->
                 @can('الحجوزات')
                 <li class="nav-item">
-                    <a href="{{route('reservations.index')}}" class="nav-link">
+                    <a href="{{ route('reservations.index') }}" class="nav-link {{ Route::currentRouteName() == 'reservations.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>الحجوزات</p>
                     </a>
@@ -75,7 +83,7 @@
                 <!-- الطلبات -->
                 @can('الطلبات')
                 <li class="nav-item">
-                    <a href="{{ route('orders.index') }}" class="nav-link">
+                    <a href="{{ route('orders.index') }}" class="nav-link {{ Route::currentRouteName() == 'orders.index' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-receipt"></i>
                         <p>الطلبات</p>
                     </a>
@@ -85,7 +93,7 @@
                 <!-- شاشة المطبخ -->
                 @can('المطبخ')
                 <li class="nav-item">
-                    <a href="{{ route('orders.kitchen') }}" class="nav-link">
+                    <a href="{{ route('orders.kitchen') }}" class="nav-link {{ Route::currentRouteName() == 'orders.kitchen' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-utensils"></i>
                         <p>شاشة المطبخ</p>
                     </a>
@@ -95,7 +103,7 @@
                 <!-- الكاشير -->
                 @can('الكاشير')
                 <li class="nav-item">
-                    <a href="{{ route('orders.cashier') }}" class="nav-link">
+                    <a href="{{ route('orders.cashier') }}" class="nav-link {{ Route::currentRouteName() == 'orders.cashier' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>الكاشير</p>
                     </a>
@@ -103,9 +111,9 @@
                 @endcan
 
                 <!-- التقارير -->
-                @can('التقارير')
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                {{-- @can('التقارير')
+                <li class="nav-item {{ in_array(Route::currentRouteName(), ['reports.sales','reports.orders']) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['reports.sales','reports.orders']) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>
                             التقارير
@@ -113,15 +121,35 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <!-- روابط فرعية للتقارير -->
+                        <li class="nav-item">
+                            <a href="{{ route('reports.sales') }}" class="nav-link {{ Route::currentRouteName() == 'reports.sales' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>مبيعات</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('reports.orders') }}" class="nav-link {{ Route::currentRouteName() == 'reports.orders' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>الطلبات</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                @endcan
+                @endcan --}}
+
+
+
+                          <li class="nav-item">
+                    <a href="{{ route('front.home') }}" class="nav-link " target="_blank">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>الموقع للمطعم</p>
+                    </a>
+                </li>
 
                 <!-- الإعدادات -->
                 @can('الاعدادات')
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ in_array(Route::currentRouteName(), ['users.index','roles.index']) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index','roles.index']) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             الإعدادات
@@ -131,7 +159,7 @@
                     <ul class="nav nav-treeview">
                         @can('المستخدمين')
                         <li class="nav-item">
-                            <a href="{{route('users.index')}}" class="nav-link">
+                            <a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteName() == 'users.index' ? 'active' : '' }}">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>بيانات المستخدمين</p>
                             </a>
@@ -140,18 +168,9 @@
 
                         @can('الصلاحيات')
                         <li class="nav-item">
-                            <a href="{{route('roles.index')}}" class="nav-link">
+                            <a href="{{ route('roles.index') }}" class="nav-link {{ Route::currentRouteName() == 'roles.index' ? 'active' : '' }}">
                                 <i class="far fa-key nav-icon"></i>
                                 <p>بيانات الصلاحيات</p>
-                            </a>
-                        </li>
-                        @endcan
-
-                        @can('الاقسام')
-                        <li class="nav-item">
-                            <a href="{{route('roles.index')}}" class="nav-link">
-                                <i class="far fa-sliders-h nav-icon"></i>
-                                <p>اعدادات السيستم</p>
                             </a>
                         </li>
                         @endcan
@@ -159,9 +178,16 @@
                 </li>
                 @endcan
 
+
+
+
+
+
+
+
                 <!-- تسجيل الخروج -->
                 <li class="nav-item mt-3">
-                    <form method="POST" action="{{route('logout')}}">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-dark btn-block text-white text-left">
                             <i class="fas fa-sign-out-alt me-2"></i> تسجيل الخروج

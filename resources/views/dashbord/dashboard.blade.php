@@ -14,7 +14,7 @@
       <div class="container-fluid">
         <div class="row mb-2 align-items-center">
           <div class="col-sm-6">
-            <h1 class="m-0 text-primary text-shadow" style="text-shadow: 1px 1px 3px #aaa;">لوحة الاحصائيات</h1>
+            {{-- <h class="m-0 text-dark text-shadow" style="text-shadow: 1px 1px 3px #aaa;">لوحة الاحصائيات</h> --}}
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -32,69 +32,61 @@
 
             <!-- Cards الإحصائيات -->
     <div class="row">
-    <!-- كارد المنتجات -->
-    <div class="col-lg-3 col-6">
-        <div class="small-box bg-primary text-white">
-            <div class="inner">
-                <h3>{{ $products_count }}</h3>
-                <p>المنتجات</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            {{-- <a href="{{ route('products.index') }}" class="small-box-footer text-white">
-                عرض <i class="fas fa-arrow-circle-right"></i>
-            </a> --}}
+
+        <!-- كارد المنتجات -->
+<div class="col-lg-3 col-6">
+    <div class="small-box text-white shadow-lg" style="background: linear-gradient(135deg, #1abc9c, #16a085);">
+        <div class="inner">
+            <h3>{{ $products_count }}</h3>
+            <p>المنتجات</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-shopping-cart"></i>
         </div>
     </div>
+</div>
+
+<!-- كارد الأقسام -->
+<div class="col-lg-3 col-6">
+    <div class="small-box text-white shadow-lg" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+        <div class="inner">
+            <h3>{{ $category_count }}</h3>
+            <p>الأقسام</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-layer-group"></i>
+        </div>
+    </div>
+</div>
+
+<!-- كارد الطلبات -->
+<div class="col-lg-3 col-6">
+    <div class="small-box text-white shadow-lg" style="background: linear-gradient(135deg, #e67e22, #d35400);">
+        <div class="inner">
+            <h3>{{ $orders_count }}</h3>
+            <p>الطلبات</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-receipt"></i>
+        </div>
+    </div>
+</div>
+
+<!-- كارد المستخدمين -->
+<div class="col-lg-3 col-6">
+    <div class="small-box text-white shadow-lg" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+        <div class="inner">
+            <h3>{{ $users_count }}</h3>
+            <p>المستخدمين</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-user-friends"></i>
+        </div>
+    </div>
+</div>
 
     <!-- كارد الأقسام -->
-    <div class="col-lg-3 col-6">
-        <div class="small-box bg-primary text-white">
-            <div class="inner">
-                <h3>{{ $category_count }}</h3>
-                <p>الأقسام</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-layer-group"></i>
-            </div>
-            {{-- <a href="{{ route('categories.index') }}" class="small-box-footer text-white">
-                عرض <i class="fas fa-arrow-circle-right"></i>
-            </a> --}}
-        </div>
-    </div>
 
-    <!-- كارد الطلبات -->
-    <div class="col-lg-3 col-6">
-        <div class="small-box bg-primary text-white">
-            <div class="inner">
-                <h3>{{ $orders_count }}</h3>
-                <p>الطلبات</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-receipt"></i>
-            </div>
-            {{-- <a href="{{ route('orders.index') }}" class="small-box-footer text-white">
-                عرض <i class="fas fa-arrow-circle-right"></i>
-            </a> --}}
-        </div>
-    </div>
-
-    <!-- كارد المستخدمين -->
-    <div class="col-lg-3 col-6">
-        <div class="small-box bg-primary text-white">
-            <div class="inner">
-                <h3>{{ $users_count }}</h3>
-                <p>المستخدمين</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-user-friends"></i>
-            </div>
-            {{-- <a href="{{ route('users.index') }}" class="small-box-footer text-white">
-                عرض <i class="fas fa-arrow-circle-right"></i>
-            </a> --}}
-        </div>
-    </div>
 </div>
 
 
@@ -103,7 +95,7 @@
                 <!-- إيراد اليوم -->
                 <div class="col-lg-6 col-md-12 mb-3">
                     <div class="card shadow-sm rounded-lg border-primary">
-                        <div class="card-header bg-primary text-white rounded-top">
+                        <div class="card-header bg-primary text-white rounded-top"    style="background: linear-gradient(135deg, #27ae60, #2ecc71); transition: transform 0.3s;">
                             <h3 class="card-title">إيراد اليوم</h3>
                         </div>
                         <div class="card-body text-center">
@@ -116,7 +108,7 @@
             <!-- آخر الحجوزات -->
 <div class="col-lg-6 col-md-12 mb-3">
     <div class="card shadow-sm rounded-lg border-info">
-        <div class="card-header bg-info text-white rounded-top">
+        <div class="card-header bg-info text-white rounded-top"      style="background: linear-gradient(135deg, #2980b9, #3498db); transition: transform 0.3s;">
             <h3 class="card-title">آخر الحجوزات</h3>
         </div>
         <div class="card-body table-responsive p-0" style="max-height: 300px;">
@@ -158,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-3">
                     <div class="card shadow-sm rounded-lg border-success">
-                        <div class="card-header bg-success text-white rounded-top">
+                        <div class="card-header bg-success text-white rounded-top"   style="background: linear-gradient(135deg, #16a085, #1abc9c); transition: transform 0.3s;">
                             <h3 class="card-title">مبيعات الشهر الحالي</h3>
 
                         </div>
@@ -168,6 +160,53 @@
                     </div>
                 </div>
             </div>
+
+
+<div class="col-lg-12 col-md-12 mb-3 mt-3">
+
+ <div class="card-header bg-info text-white rounded-top"   style="background: linear-gradient(135deg, #8e44ad, #9b59b6); transition: transform 0.3s;">
+
+    <h5 class="mt-4">آخر 7 اوردرات</h5>
+
+ </div>
+    @if($latest_orders->count())
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>رقم الطلب</th>
+                    <th>اسم العميل</th>
+                    <th>إجمالي المبلغ</th>
+                    <th>تاريخ الطلب</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($latest_orders as $order)
+                    <tr>
+                        <td>#{{ $order->id }}</td>
+                        <td>{{ $order->user->name ?? 'ضيف' }}</td>
+                        <td>{{ number_format($order->total, 2) }} ج</td>
+                        <td>    {{ $order->created_at->setTimezone('Africa/Cairo')->format('d/m/Y g:i A') }}
+
+                        <td>
+                            @if($order->status == 'pending')
+                                <span class="badge bg-warning text-dark">قيد الانتظار</span>
+                            @elseif($order->status == 'completed')
+                                <span class="badge bg-success">مكتمل</span>
+                            @elseif($order->status == 'canceled')
+                                <span class="badge bg-danger">ملغى</span>
+                            @else
+                                <span class="badge bg-secondary">غير محدد</span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>لا يوجد طلبات حتى الآن.</p>
+    @endif
+</div>
 
         </div>
     </section>

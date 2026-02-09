@@ -21,6 +21,11 @@ class DashboardController extends Controller
         $orders_count = Order::count();
         $users_count = User::count();
 
+
+$latest_orders = Order::latest()->take(7)->get();
+
+
+
         // آخر 5 حجوزات
         $latest_reservations = Reservation::latest()->take(5)->get();
 
@@ -52,7 +57,8 @@ class DashboardController extends Controller
             'latest_reservations',
             'today_income',
             'chart_labels',
-            'chart_data'
+            'chart_data',
+           'latest_orders'
         ));
     }
 }

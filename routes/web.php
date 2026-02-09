@@ -12,11 +12,16 @@ use App\Http\Controllers\Admin\DashboardController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('front.home');
-Route::get('/category/{id}', [HomeController::class, 'filter'])->name('front.home.filter');
-Route::get('/menu', [HomeController::class, 'menu'])->name('front.menu'); // الصفحة اللي QR يفتحها
-Route::get('/menu/category/{id}', [HomeController::class, 'menuFilter'])->name('front.menu.filter');
 
+Route::get('/category/{id}', [HomeController::class, 'filter'])
+    ->name('front.home.filter');
 
+// Menu (QR Page)
+Route::get('/menu', [HomeController::class, 'menu'])
+    ->name('front.menu');
+
+Route::get('/menu/category/{categoryId}', [HomeController::class, 'menu'])
+    ->name('front.menu.filter');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

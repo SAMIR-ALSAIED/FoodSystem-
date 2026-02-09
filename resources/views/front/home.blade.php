@@ -1,159 +1,137 @@
 
-@extends('front.layout.app')
+    @extends('front.layout.app')
+
+@section('title')
+    الصفحة الرئيسية
+@endsection
+
+    @section('front_content')
 
 
-@section('front_content')
 
-
-<section class="slider-hero hero-slider  hero-style-1  ">
-  <div class="swiper-container swiper-container-horizontal">
-    <div class="swiper-wrapper">
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="{{ asset('front')}}/images/banner/slide-1.jpg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
             <div class="row">
-              <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to restuarant</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Fresh,Delicious meal to reach your optimum health and fitness</h1>
-                <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end slide-item -->
+                <div class="col-lg-8 mx-auto text-center">
+<h1 class="display-3 fw-bold text-white mb-4">
+    متعة الطعم في <span style="color: #ffc107;">كل وجبة</span>
+</h1>
+                    <p class="lead text-white mb-5 ">         استمتع بأشهى المأكولات مع كل لقمة
+                    <div class="hero-buttons">
 
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="{{ asset('front')}}/images/banner/slide-2.jpg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
+                        <a href="#qrcode" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-qrcode"></i> مسح الباركود
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title">لماذا نحن الأفضل؟</h2>
+                    <p class="text-muted">نقدم لك تجربة طعام لا تُنسى</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>جودة عالية</h4>
+                        <p class="text-muted">نستخدم أجود المكونات الطازجة</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h4>توصيل سريع</h4>
+                        <p class="text-muted">خدمة توصيل سريعة لجميع المناطق</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>فريق محترف</h4>
+                        <p class="text-muted">طهاة ذوو خبرة عالية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section id="qrcode" class="qrcode-section py-5">
+        <div class="container">
             <div class="row">
-              <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to restuarant</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Good food starts with good ingridients.Have a great time with us</h1>
-                <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end slide-item -->
-
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="{{ asset('front')}}/images/banner/slide-3.jpg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to restuarant</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">We deliver good quality food with great service to our customers</h1>
-                <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end slide-item -->
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</section>
-<!--  Banner End -->
+                <div class="col-lg-6 mx-auto">
+                    <div class="qrcode-card text-center p-5">
+                        <h3 class="mb-4">امسح الباركود لعرض المنيو</h3>
+                        <div class="qr-container mb-4">
+                            <div id="qrcode-display" class="qr-placeholder">
+                                <a href="{{ $appUrl }}" target="_blank" class="d-inline-block mt-3">
+    {!! QrCode::size(250)->generate($appUrl) !!}
+</a>
 
 
-
-
-<!-- CTA  End -->
-
-<!-- DISHES start -->
-<section class="section menu py-5 bg-light">
-    <div class="container">
-        <!-- عنوان القسم -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <span class="text-primary font-extra font-md">المنتجات</span>
-                <h2 class="mt-2 mb-4">اكتشف أفضل منتجاتنا بجودة عالية</h2>
-            </div>
-        </div>
-
-        <!-- المنتجات -->
-        <div class="row">
-            @foreach($products as $product)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card product-card shadow-sm border-0 h-100">
-                        <div class="position-relative overflow-hidden">
-                            <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/default.jpg') }}"
-                                 alt="{{ $product->name }}"
-                                 class="card-img-top img-fluid"
-                                 style="height:250px; object-fit:cover;">
-                            <!-- Hover overlay -->
-                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-                                 style="background: rgba(0,0,0,0.4); opacity:0; transition:0.3s;">
-                                <a href="#" class="btn btn-light">عرض التفاصيل</a>
                             </div>
                         </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <h6 class="text-primary font-weight-bold">{{ $product->price }}$</h6>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Dishes -->
+    <section class="popular-dishes py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title">  المنتجات العشوية </h2>
+
+                </div>
+            </div>
+            <div class="row g-4">
+                @foreach ($products as $product )
+
+
+                <div class="col-md-4">
+                    <div class="dish-card">
+
+                              <div class=" text-center">
+            <img src="{{ $product->image ? asset('images/'.$product->image) : asset('images/default.jpg') }}"
+                 alt="{{ $product->name }}"
+                 class="img-fluid rounded-top"
+                 style="height:200px; object-fit:cover; width:100%;">
+        </div>
+                        <div class="dish-info p-4">
+                            <h5> {{ $product->name }}</h5>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">{{ $product->price }} ج</span>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
 
-        <!-- زر عرض كل المنتجات -->
-
-    </div>
-</section>
-
-<!-- تحسينات CSS -->
-
-
-
-<!-- DISHES  End -->
-
-<!--App start -->
-<section class="section download py-5 bg-light">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-6 text-center mb-4 mb-md-0">
-                <h3 class="mb-3">Scan QR Code to Download</h3>
-
-                <div class="qr-code mx-auto" style="width:250px; height:250px;">
-                    {{-- QR Code ديناميكي --}}
-                    {!! QrCode::size(250)->generate($appUrl) !!}
-                </div>
-
-                <p class="mt-3">افتح الرابط لمسح الكود وتحميل التطبيق</p>
+                    @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-
-<!-- App  End -->
-
-<!-- CTA start -->
-<section class="section cta">
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-8 text-center">
-				<span class="font-extra text-md-2 text-white-70">Prepare The Best Dishes</span>
-				<h2 class="mt-3 text-white mb-4">Come & Experience Our Best of World Class Cousine</h2>
-
-				<a href="#" class="btn btn-white">book now</a>
-			</div>
-		</div>
-	</div>
-</section>
-
-@endsection
+    @endsection

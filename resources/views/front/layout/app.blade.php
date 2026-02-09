@@ -1,206 +1,105 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
-
-<!-- Mirrored from demo.themefisher.com/cafedine-bootstrap/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Apr 2025 15:05:43 GMT -->
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <title>CafeDine - Restuarant template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @yield('title')</title>
 
-  <!-- mobile responsive meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- ** Plugins Needed for the Project ** -->
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/themify/css/themify-icons.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/icofont/icofont.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/fontawesome/css/all.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/aos/aos.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/magnific-popup/magnific-popup.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/video-popup/modal-video.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/swiper/swiper.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/date-picker/datepicker.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/clock-picker/clockpicker.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
-  <link rel="stylesheet" href="{{ asset('front')}}/plugins/devices.min.css">
-
-  <!-- Main Stylesheet -->
-  <link href="{{ asset('front')}}/css/style.css" rel="stylesheet">
-
-  <!--Favicon-->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="{{ asset('front')}}/images/favicon.png" type="image/x-icon">
-
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('front')}}/css/style.css">
 </head>
-
 <body>
-  <div class="preloader">
-    <img src="{{ asset('front')}}/images/preloader.gif" alt="preloader" class="img-fluid">
-  </div>
-
-<!-- Header Start -->
-
-<header class="navigation ">
-	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-absolute w-100" id="main-nav">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">
-				<img src="{{ asset('front')}}/images/logo.png" alt="" class="img-fluid">
-			</a>
-
-			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation"
-				aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="fa fa-bars"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navigation">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="menu.html">Recipes</a></li>
-					<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">Reservation</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="reservation.html">Reservation</a></li>
-							<li><a class="dropdown-item" href="cart.html">Cart</a></li>
-							<li><a class="dropdown-item" href="shipping.html">Shipping</a></li>
-							<li><a class="dropdown-item" href="payment.html">Payment</a></li>
-							<li><a class="dropdown-item" href="confirmation.html">Confirmation</a></li>
-						</ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">Blog</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="blog.html">Blog </a></li>
-							<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-						</ul>
-					</li>
-
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-</header>
-
-@yield('front_content')
+    <!-- Navigation -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a  class="navbar-brand" href="{{ route('front.home') }}">
+                <i class="fas fa-utensils"></i> مطعمنا
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href=" {{ route('front.home') }}">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('front.menu') }}">قائمة الطعام</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="reservation.html">الحجز</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">اتصل بنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
+    @yield('front_content')
 
-<!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
 
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-									class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-									class="ti-dribbble mr-2 "></i></a></li>
-					</ul>
-				</div>
-			</div>
+    <!-- Footer -->
+<footer class="footer bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <!-- عن المطعم -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold"><i class="fas fa-utensils"></i> مطعم الذواقة</h5>
+                <p class="text-light">
+                    نقدم أشهى الأطباق العربية والعالمية مع خدمة ممتازة وأجواء مريحة لعائلتك وأصدقائك.
+                </p>
+            </div>
 
-			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Contact Info</h4>
+            <!-- روابط سريعة -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">روابط سريعة</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-light text-decoration-none">الرئيسية</a></li>
+                    <li><a href="menu.html" class="text-light text-decoration-none">قائمة الطعام</a></li>
+                    <li><a href="about.html" class="text-light text-decoration-none">من نحن</a></li>
+                    <li><a href="contact.html" class="text-light text-decoration-none">اتصل بنا</a></li>
+                </ul>
+            </div>
 
-					<ul class="list-unstyled mb-0 footer-contact">
-						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
+            <!-- تواصل معنا -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">تواصل معنا</h5>
+                <p class="text-light mb-1">
+                    <i class="fas fa-phone me-2"></i> 0123456789
+                </p>
+                <p class="text-light mb-1">
+                    <i class="fas fa-envelope me-2"></i> info@restaurant.com
+                </p>
+                <p class="text-light mb-0">
+                    <i class="fas fa-map-marker-alt me-2"></i> القاهرة، مصر
+                </p>
+            </div>
+        </div>
 
-					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
-					</div>
-					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
-					</div>
-				</div>
-			</div>
-		</div>
+        <hr class="border-light">
 
-		<div class="row justify-content-center mt-5">
-			<div class="col-lg-6 text-center">
-				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
-				<form action="#" class="footer-newsletter">
-					<div class="form-group">
-						<button class="button"><span class="ti-email"></span></button>
-						<input type="email" class="form-control" placeholder="Enter Email">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+        <!-- حقوق النشر -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3">
+            <p class="mb-0 text-light">&copy; 2024 مطعم الذواقة. جميع الحقوق محفوظة.</p>
+            <p class="mb-0 text-light">أفضل تجربة طعام لعائلتك وأصدقائك!</p>
+        </div>
+    </div>
 </footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
-
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Footer  End -->
-
-<!-- jQuery -->
-<script src="{{ asset('front')}}/plugins/jQuery/jquery.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="{{ asset('front')}}/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="{{ asset('front')}}/plugins/aos/aos.js"></script>
-<script src="{{ asset('front')}}/plugins/shuffle/shuffle.min.js"></script>
-<script src="{{ asset('front')}}/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="{{ asset('front')}}/plugins/date-picker/datepicker.min.js"></script>
-<script src="{{ asset('front')}}/plugins/clock-picker/clockpicker.min.js"></script>
-<script src="{{ asset('front')}}/plugins/video-popup/jquery-modal-video.min.js"></script>
-<script src="{{ asset('front')}}/plugins/swiper/swiper.min.js"></script>
-<script src="{{ asset('front')}}/plugins/instafeed/instafeed.min.js"></script>
-<script src="{{ asset('front')}}/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js"></script>
-
- <!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-<script src="{{ asset('front')}}/plugins/google-map/gmap.js"></script>
-<!-- Main Script -->
-<script src="{{ asset('front')}}/js/contact.js"></script>
-<script src="{{ asset('front')}}/js/script.js"></script>
-
-
-<!-- Mirrored from demo.themefisher.com/cafedine-bootstrap/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Apr 2025 15:06:09 GMT -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ asset('front')}}/js/main.js"></script>
+</body>
 </html>

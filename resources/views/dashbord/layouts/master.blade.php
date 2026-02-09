@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="{{asset('admin')}}/dist/css/pagination.css">
   <!-- overlayScrollbars -->
+
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/daterangepicker/daterangepicker.css">

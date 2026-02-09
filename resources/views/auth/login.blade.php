@@ -1,4 +1,5 @@
 <x-guest-layout>
+
     <div class="card card-outline card-primary shadow-lg">
         <div class="card-header text-center">
             <h3 class="h3"><b>تسجيل</b> الدخول</h3>
@@ -11,14 +12,14 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}">
+            <form id="loginForm" method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <div class="mb-3">
                     <div class="input-group">
                         <input type="email" name="email" value="{{ old('email') }}"
                                class="form-control @error('email') is-invalid @enderror"
-                               placeholder="البريد الإلكتروني" required autofocus>
+                               placeholder="البريد الإلكتروني"  autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -32,27 +33,29 @@
 
                 <div class="mb-3">
                     <div class="input-group">
-                        <input type="password" name="password"
-                               class="form-control @error('password') is-invalid @enderror"
-                               placeholder="كلمة المرور" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="كلمة السر">
+                        <span class="input-group-text" style="cursor:pointer" onclick="togglePassword()">
+                            <i class="bi bi-eye" id="eyeIcon"></i>
+                        </span>
                     </div>
                     @error('password')
                         <small class="text-danger mt-1 d-block">{{ $message }}</small>
                     @enderror
                 </div>
 
+                <!-- Progress Bar مخفي في البداية -->
+                <div id="progressContainer" class="mb-3" style="display:none;">
+                    <label class="form-label">جارٍ تسجيل الدخول...</label>
+                    <div class="progress" style="height: 20px;">
+                        <div id="loginProgress" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+
                 <div class="row align-items-center">
                     <div class="col-7">
                         <div class="icheck-primary">
                             <input type="checkbox" name="remember" id="remember">
-                            <label for="remember">
-                                تذكرني
-                            </label>
+                            <label for="remember">تذكرني</label>
                         </div>
                     </div>
                     <div class="col-5">
@@ -63,21 +66,9 @@
                 </div>
             </form>
 
-            <hr>
-{{--
-            <div class="text-center">
-                @if (Route::has('password.request'))
-                    <p class="mb-1">
-                        <a href="{{ route('password.request') }}" class="text-sm">نسيت كلمة المرور؟</a>
-                    </p>
-                @endif
-
-                @if (Route::has('register'))
-                    <p class="mb-0 text-sm">
-                        ليس لديك حساب؟ <a href="{{ route('register') }}">إنشاء حساب</a>
-                    </p>
-                @endif
-            </div> --}}
         </div>
     </div>
+
+
+
 </x-guest-layout>
