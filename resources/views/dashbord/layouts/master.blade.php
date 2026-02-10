@@ -242,7 +242,7 @@ $(document).ready(function() {
             }
         },
         "paging": true,
-        "pageLength": 12,
+        "pageLength": 10,
         "searching": true,
         "ordering": true,
         "info": true,

@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $users_count = User::count();
 
 
-$latest_orders = Order::latest()->take(7)->get();
+$latest_orders = Order::latest()->take(10)->get();
 
 
 

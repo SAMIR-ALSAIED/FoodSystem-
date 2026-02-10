@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,8 @@ $products = Product::inRandomOrder()->take(6)->get();
 
         $appUrl = 'http://192.168.1.10:8000/menu';
 
-        return view('front.home', compact('products','appUrl'));
+        $sliders=Slider::all();
+        return view('front.home', compact('products','appUrl','sliders'));
     }
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KitchenController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\SliderController;
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
@@ -58,8 +59,13 @@ Route::post('orders/cashier/store', [CashierController::class,'storeCashier'])->
 
     Route::resource('orders', OrderController::class);
 
-
      });
+
+   Route::resource('sliders', SliderController::class);
+
+
+
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

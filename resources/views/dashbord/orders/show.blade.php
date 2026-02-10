@@ -8,9 +8,14 @@
     <!-- عنوان الصفحة والعودة -->
     <section class="content-header mb-3 d-flex justify-content-between align-items-center">
         <h1>تفاصيل الطلب #{{ $order->id }}</h1>
-        <a href="{{ route('orders.index') }}" class="btn btn-dark">
-            <i class="fas fa-arrow-left"></i> العودة للطلبات
-        </a>
+        <div>
+            <a href="{{ route('orders.index') }}" class="btn btn-dark">
+                <i class="fas fa-arrow-left"></i> العودة للطلبات
+            </a>
+            <button class="btn btn-success" id="print-order-invoice">
+                <i class="bi bi-printer"></i> طباعة الفاتورة
+            </button>
+        </div>
     </section>
 
     <section class="content">
@@ -56,7 +61,7 @@
                     </div>
                 </div>
 
-
+                <!-- جدول المنتجات -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center align-middle">
                         <thead class="bg-dark text-white">
@@ -91,4 +96,92 @@
         </div>
     </section>
 </div>
+
+<!-- طباعة الفاتورة -->
+<script>
+const order = @json($order);
+const cashierName = "{{ auth()->user()->name }}";
+
+document.getElementById('print-order-invoice').addEventListener('click', () => {
+    let itemsHtml = '';
+    let total = 0;
+
+    order.items.forEach(item => {
+        const itemTotal = parseFloat(item.price) * parseInt(item.quantity);
+        total += itemTotal;
+        itemsHtml += `
+            <tr>
+                <td style="padding:5px;text-align:right;">${item.product ? item.product.name : 'منتج محذوف'}</td>
+                <td style="padding:5px;text-align:center;">${item.quantity}</td>
+                <td style="padding:5px;text-align:center;">${parseFloat(item.price).toFixed(2)}</td>
+                <td style="padding:5px;text-align:right;">${itemTotal.toFixed(2)}</td>
+            </tr>
+        `;
+    });
+
+    // تحويل التاريخ لنسق عربي جميل
+    const orderDate = new Date(order.created_at);
+    const formattedDate = orderDate.toLocaleString('ar-EG', { dateStyle:'short', timeStyle:'short' });
+
+    const invoiceHtml = `
+<html dir="rtl">
+<head>
+    <title>فاتورة الطلب</title>
+    <style>
+        body { font-family: 'Cairo', sans-serif; margin:20px; color:#333; background:#fff; }
+        .header { text-align:center; padding-bottom:10px; margin-bottom:15px; }
+        .header h1 { margin:0; font-size:24px; color:#000; }
+        .header p { margin:3px 0; font-size:14px; }
+        table { width:100%; border-collapse: collapse; margin-top:10px; }
+        th, td { border-bottom:1px solid #ccc; padding:8px; font-size:14px; }
+        th { background:#f8f9fa; font-weight:600; }
+        td { text-align:center; }
+        .totals { width:100%; margin-top:10px; }
+        .totals td { font-weight:bold; padding:6px 10px; font-size:15px; text-align:right; }
+        .thankyou { text-align:center; margin-top:20px; color:#555; font-size:14px; }
+        @media print { body { margin:0; font-size:12px; } table, th, td { border: 1px solid #ccc; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>مطعمنا</h1>
+        <p>فاتورة رقم: ${order.id}</p>
+        <p>التاريخ: ${formattedDate}</p>
+        <p><strong>الطاولة:</strong> ${order.table ? order.table.number : 'بدون طاولة'}</p>
+        <p><strong>اسم الكاشير:</strong> ${cashierName}</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>المنتج</th>
+                <th>الكمية</th>
+                <th>السعر</th>
+                <th>الإجمالي</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${itemsHtml}
+        </tbody>
+    </table>
+
+    <table class="totals">
+        <tr>
+            <td>الإجمالي:</td>
+            <td>${total.toFixed(2)} ج.م</td>
+        </tr>
+    </table>
+
+    <p class="thankyou">شكراً لزيارتكم، ونتمنى لكم يومًا سعيدًا!</p>
+</body>
+</html>
+`;
+
+    const printWindow = window.open('', '', 'height=700,width=500');
+    printWindow.document.write(invoiceHtml);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+});
+</script>
 @endsection

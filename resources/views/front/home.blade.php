@@ -10,25 +10,65 @@
 
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-<h1 class="display-3 fw-bold text-white mb-4">
-    متعة الطعم في <span style="color: #ffc107;">كل وجبة</span>
-</h1>
-                    <p class="lead text-white mb-5 ">         استمتع بأشهى المأكولات مع كل لقمة
-                    <div class="hero-buttons">
 
-                        <a href="#qrcode" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-qrcode"></i> مسح الباركود
-                        </a>
+@php
+    $firstSlider = $sliders->first(); // نجيب أول Slider
+@endphp
+
+<div id="heroCarousel" class="carousel slide carousel-fade hero-section" data-bs-ride="carousel"  data-bs-interval="3000">
+
+    <div class="carousel-inner">
+        @foreach ($sliders as $key => $slider)
+            <div class="carousel-item @if($key == 0) active @endif"
+                 style="
+                    background-image:
+                        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
+                        url('{{ asset('images/sliders/' . $slider->image) }}');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    min-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                 ">
+                <div class="container hero-content">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto text-center">
+
+                            <h1 class="display-3 fw-bold text-white mb-4">
+                      {{ $slider->big_title }}
+                            </h1>
+
+                            <p class="lead text-white mb-5">
+                                {{ $slider->small_title }}
+                            </p>
+
+                            <div class="hero-buttons">
+                                <a href="#qrcode" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-qrcode"></i> مسح الباركود
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
             </div>
-        </div>
-    </section>
+        @endforeach
+    </div>
+
+    <!-- Controls -->
+    @if($sliders->count() > 1)
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next " type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon " aria-hidden="true"></span>
+    </button>
+
+    @endif
+</div>
+
 
     <!-- Features Section -->
     <section class="features-section py-5">
@@ -64,7 +104,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <h4>فريق محترف</h4>
-                        <p class="text-muted">طهاة ذوو خبرة عالية</p>
+                        <p class="text-muted">   خبراء في تقديم أشهى المأكولات</p>
                     </div>
                 </div>
             </div>
@@ -122,7 +162,7 @@
                             <h5> {{ $product->name }}</h5>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="price">{{ $product->price }} ج</span>
+                                <span class="d-block text-center fs-5 fw-bold mb-2">{{ $product->price }} جنية</span>
 
                             </div>
                         </div>

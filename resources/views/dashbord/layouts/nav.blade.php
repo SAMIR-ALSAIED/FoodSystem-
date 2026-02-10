@@ -138,6 +138,9 @@
                 @endcan --}}
 
 
+                            @can('الموقع للمطعم')
+
+
 
                           <li class="nav-item">
                     <a href="{{ route('front.home') }}" class="nav-link " target="_blank">
@@ -146,6 +149,7 @@
                     </a>
                 </li>
 
+                   @endcan
                 <!-- الإعدادات -->
                 @can('الاعدادات')
                 <li class="nav-item {{ in_array(Route::currentRouteName(), ['users.index','roles.index']) ? 'menu-open' : '' }}">
@@ -174,6 +178,21 @@
                             </a>
                         </li>
                         @endcan
+
+                              @can('اسليدر الموقع ')
+
+
+
+
+
+                              <li class="nav-item">
+                            <a href="{{ route('sliders.index') }}" class="nav-link ">
+                                <i class="far fa-key nav-icon"></i>
+                                <p>اسليدر الموقع </p>
+                            </a>
+                        </li>
+                           @endcan
+
                     </ul>
                 </li>
                 @endcan

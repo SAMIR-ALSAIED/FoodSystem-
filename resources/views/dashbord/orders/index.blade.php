@@ -7,9 +7,14 @@
 
     <section class="content-header">
         <h1>الطلبات</h1>
-        {{-- <a href="{{ route('orders.create') }}" class="btn btn-dark mt-2">
+
+        {{-- @can('اضافة طلبات')
+
+        <a href="{{ route('orders.create') }}" class="btn btn-dark mt-2">
             إضافة طلب جديد
-        </a> --}}
+        </a>
+
+        @endcan --}}
     </section>
 
     <section class="content">
@@ -61,8 +66,19 @@
 
                             </td>
 
+                            @can('عرض الطلبات')
+
+
                              <td><a class="btn btn-info" href="{{ route('orders.show',$order->id ) }}">عرض </a></td>
                             <td>
+
+
+                            @endcan
+
+
+                            @can('حذف طلبات')
+
+
 
     <!-- زر الحذف -->
     <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display:inline-block;">
@@ -72,6 +88,7 @@
             حذف
         </button>
     </form>
+       @endcan
 </td>
 
 

@@ -43,13 +43,7 @@
                     @enderror
                 </div>
 
-                <!-- Progress Bar مخفي في البداية -->
-                <div id="progressContainer" class="mb-3" style="display:none;">
-                    <label class="form-label">جارٍ تسجيل الدخول...</label>
-                    <div class="progress" style="height: 20px;">
-                        <div id="loginProgress" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
-                    </div>
-                </div>
+
 
                 <div class="row align-items-center">
                     <div class="col-7">

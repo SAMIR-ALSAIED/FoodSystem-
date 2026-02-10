@@ -32,11 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('front.menu') }}">قائمة الطعام</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">من نحن</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="reservation.html">الحجز</a>
+                        <a class="nav-link " href="{{ route('front.reservation.create') }}">الحجوازت</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">اتصل بنا</a>
@@ -56,9 +54,9 @@
         <div class="row">
             <!-- عن المطعم -->
             <div class="col-md-4 mb-4">
-                <h5 class="fw-bold"><i class="fas fa-utensils"></i> مطعم الذواقة</h5>
+                <h5 class="fw-bold"><i class="fas fa-utensils"></i> مطعمنا</h5>
                 <p class="text-light">
-                    نقدم أشهى الأطباق العربية والعالمية مع خدمة ممتازة وأجواء مريحة لعائلتك وأصدقائك.
+                    نقدم أشهى الاكلات  مع خدمة ممتازة وأجواء مريحة لعائلتك وأصدقائك.
                 </p>
             </div>
 
@@ -92,7 +90,7 @@
 
         <!-- حقوق النشر -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3">
-            <p class="mb-0 text-light">&copy; 2024 مطعم الذواقة. جميع الحقوق محفوظة.</p>
+            <p class="mb-0 text-light">&copy; 2024 مطعمنا . جميع الحقوق محفوظة.</p>
             <p class="mb-0 text-light">أفضل تجربة طعام لعائلتك وأصدقائك!</p>
         </div>
     </div>

@@ -44,12 +44,16 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+/* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
                       url('../imges/bg.png');
 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+
+           background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
 
     margin-top: 56px;
     overflow: hidden;
@@ -122,6 +126,8 @@ background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
     margin-bottom: 1rem;
 }
 
+
+
 .feature-card {
         background: #fff;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -141,6 +147,12 @@ background: linear-gradient(135deg, #2c2c2c, #ff7a2e);
     transition: all 0.4s ease-in-out; /* إضافة Transition انسيابية */
 }
 
+
+.feature-card p:hover {
+
+    color: #fff !important;
+
+}
 
 
 
@@ -248,6 +260,7 @@ background: linear-gradient(135deg, #2c2c2c, #ff7a2e);
 .page-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 100px 0 60px;
+
     margin-top: 56px;
     text-align: center;
 }
@@ -679,4 +692,269 @@ background: linear-gradient(135deg, #2c2c2c, #ff7a2e);
 
 .animate-slide-left {
     animation: slideInLeft 0.8s ease-out;
+}
+
+
+
+    /* ======= Menu Page Pro Style ======= */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(120deg, #f39c12, #e74c3c);
+    color: #fff;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-top: 15px;
+}
+
+/* Category Buttons */
+.menu-section .btn-outline-primary {
+    border-width: 2px;
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    margin: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    color: #333;
+
+        border: 2px solid transparent;
+    background: #e74c3c;
+
+    color: #fff;
+
+}
+
+.menu-section .btn-outline-primary.active,
+.menu-section .btn-outline-primary:hover {
+    background: #e74c3c !important;
+    color: #fff;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+}
+
+/* Product Card */
+.menu-section .card {
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    border: none;
+}
+
+.menu-section .card:hover {
+
+    box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+}
+
+/* Card Image */
+.menu-section .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    transition: transform 0.5s ease;
+}
+
+.menu-section .card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+/* Card Body */
+.menu-section .card-body {
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Card Title */
+.menu-section .card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Price */
+.menu-section .card-body span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e74c3c;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Add to Cart Button */
+.menu-section .btn-success {
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background: #e67e22;
+    border: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-section .btn-success i {
+    margin-right: 8px;
+}
+
+.menu-section .btn-success:hover {
+    background: #d35400;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Empty Message */
+.menu-section p.text-muted {
+    font-size: 1.3rem;
+    margin-top: 3rem;
+}
+
+/* Pagination Style for Menu */
+.menu-section .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 5px;
+}
+
+.menu-section .pagination li a,
+.menu-section .pagination li span {
+    background: #e67e22; /* لون برتقالي */
+    color: #fff !important; /* نص أبيض */
+    border-radius: 50px !important;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.menu-section .pagination li a:hover {
+    background: #d35400; /* برتقالي أغمق عند Hover */
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* للصفحة النشطة */
+.menu-section .pagination .active span {
+    background: #ff7f50; /* برتقالي فاتح للصفحة الحالية */
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+
+
+
+/* reservation */
+
+
+
+  /* Page Header */
+.page-header {
+    background: linear-gradient(120deg, #f39c12, #e74c3c);
+    color: #fff;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+/* Reservation Form Card */
+.reservation {
+    background: #fff;
+    border-radius: 25px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    max-width: 900px;
+    margin: -60px auto 60px;
+}
+
+span{
+        color: #e74c3c;
+}
+
+.reservation h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #e74c3c;
+}
+
+/* Form Fields */
+.reservation .form-control,
+.reservation .form-select {
+    border-radius: 50px;
+    padding: 12px 20px;
+    border: 1px solid #000000;
+    transition: 0.3s;
+}
+
+.reservation .form-control:focus,
+.reservation .form-select:focus {
+    border-color: #d35400;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Error Message */
+.reservation span.text-danger {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Submit Button */
+.reservation button {
+    background: #e67e22;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    transition: all 0.3s;
+}
+
+.reservation button:hover {
+    background: #d35400;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Alerts */
+.reservation .alert {
+    border-radius: 20px;
+    font-weight: 600;
 }

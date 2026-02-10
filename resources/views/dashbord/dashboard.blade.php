@@ -166,7 +166,7 @@
 
  <div class="card-header bg-info text-white rounded-top"   style="background: linear-gradient(135deg, #8e44ad, #9b59b6); transition: transform 0.3s;">
 
-    <h5 class="mt-4">آخر 7 اوردرات</h5>
+    <h5 class="mt-4">آخر 10 اوردرات</h5>
 
  </div>
     @if($latest_orders->count())
@@ -178,6 +178,9 @@
                     <th>إجمالي المبلغ</th>
                     <th>تاريخ الطلب</th>
                     <th>الحالة</th>
+                    <th>
+عرض
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -199,6 +202,11 @@
                                 <span class="badge bg-secondary">غير محدد</span>
                             @endif
                         </td>
+
+
+
+                             <td><a class="btn btn-info" href="{{ route('orders.show',$order->id ) }}">عرض </a></td>
+
                     </tr>
                 @endforeach
             </tbody>

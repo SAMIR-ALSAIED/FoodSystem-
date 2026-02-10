@@ -48,28 +48,7 @@
             }
         }
 
-        // Progress Bar قبل إرسال الفورم
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // منع الإرسال الافتراضي
 
-            const form = this;
-            const progressContainer = document.getElementById('progressContainer');
-            const progressBar = document.getElementById('loginProgress');
-
-            progressContainer.style.display = 'block'; // اظهار الشريط
-
-            let width = 0;
-            const interval = setInterval(() => {
-                if(width >= 100){
-                    clearInterval(interval);
-                    form.submit(); // بعد اكتمال الشريط، إرسال الفورم
-                } else {
-                    width += 1; // سرعة زيادة الشريط
-                    progressBar.style.width = width + '%';
-                    progressBar.textContent = width + '%';
-                }
-            }, 20); // كل 20ms يزيد 1%
-        });
     </script>
 </body>
 </html>
