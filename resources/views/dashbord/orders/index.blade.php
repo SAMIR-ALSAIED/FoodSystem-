@@ -5,6 +5,9 @@
 @section('admin_content')
 <div class="content-wrapper">
 
+
+
+
     <section class="content-header">
         <h1>الطلبات</h1>
 
@@ -26,7 +29,7 @@
                         <tr>
                             <th>#</th>
                             <th>الطاولة</th>
-                            <th>المستخدم</th>
+                            <th>اسم الكاشير</th>
                             <th>الإجمالي</th>
                             <th>التاريخ </th>
                             <th>الحالة</th>
@@ -54,13 +57,13 @@
         $statuses = [
             'pending'   => ['label' => 'قيد الانتظار', 'color' => 'warning'],
             'preparing' => ['label' => 'جار التحضير', 'color' => 'info'],
-            'ready'     => ['label' => 'جاهز', 'color' => 'success'],
-            'completed' => ['label' => 'مكتمل', 'color' => 'secondary'],
-            'canceled'  => ['label' => 'ملغى', 'color' => 'danger'], // لو حبيت تضيف حالة
+
+            'completed' => ['label' => 'مكتمل', 'color' => 'success'],
+            // 'canceled'  => ['label' => 'ملغى', 'color' => 'danger'], // لو حبيت تضيف حالة
         ];
     @endphp
 
-    <span class="badge bg-{{ $statuses[$order->status]['color'] ?? 'secondary' }}">
+    <span class="badge bg-{{ $statuses[$order->status]['color'] ?? 'success' }}">
         {{ $statuses[$order->status]['label'] ?? ucfirst($order->status) }}
     </span>
 
@@ -69,7 +72,7 @@
                             @can('عرض الطلبات')
 
 
-                             <td><a class="btn btn-info" href="{{ route('orders.show',$order->id ) }}">عرض </a></td>
+                             <td><a class="btn btn-info" href="{{ route('orders.show',$order->id ) }}"> <i class="bi bi-eye"></i>  </a></td>
                             <td>
 
 
@@ -85,7 +88,7 @@
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger" onclick="return confirm('هل تريد حذف هذا الطلب؟')">
-            حذف
+               <i class="bi bi-trash"></i> 
         </button>
     </form>
        @endcan

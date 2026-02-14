@@ -32,6 +32,18 @@ $order->update([
       'status' => $validData['status']
 ]);
 
+
+
+    // لو الطلب بقى مكتمل → فضّي الطاولة
+    // if ($validData['status'] === 'completed' && $order->table_id) {
+    //     $order->table()->update([
+    //         'status' => 'متاحة'
+    //     ]);
+    // }
+
+
+
+
     return response()->json([
         'success' => true,
         'status' => $order->status,

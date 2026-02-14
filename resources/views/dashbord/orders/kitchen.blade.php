@@ -33,7 +33,6 @@
                             <select class="form-select form-select-sm update-status">
                                 <option value="pending" {{ $order->status=='pending'?'selected':'' }}>قيد الانتظار</option>
                                 <option value="preparing" {{ $order->status=='preparing'?'selected':'' }}>جار التحضير</option>
-                                <option value="ready" {{ $order->status=='ready'?'selected':'' }}>جاهز</option>
                                 <option value="completed" {{ $order->status=='completed'?'selected':'' }}>مكتمل</option>
                             </select>
                             <span class="badge {{ $order->status=='pending'?'bg-warning':

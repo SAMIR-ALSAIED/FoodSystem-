@@ -36,9 +36,22 @@
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('front.reservation.create') }}">الحجوازت</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="contact.html">اتصل بنا</a>
-                    </li>
+                    </li> --}}
+
+<a href="{{ route('front.cart.index') }}" class="btn btn-outline-light position-relative">
+    <i class="fas fa-shopping-cart"></i>
+
+    @if(session('cart') && count(session('cart')) > 0)
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ count(session('cart')) }}
+        </span>
+    @endif
+</a>
+
+
+
                 </ul>
             </div>
         </div>

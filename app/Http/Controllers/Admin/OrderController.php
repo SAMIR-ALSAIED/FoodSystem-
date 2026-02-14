@@ -13,9 +13,9 @@ class OrderController extends Controller
     public function index()
     {
 
-        // $orders = Order::orderBy('created_at', 'desc')->get(); // ترتيب من الأحدث للأقدم
 
-    $orders = Order::orderBy('id', 'desc')->get(); // ترتيب حسب آخر id
+
+    $orders = Order::orderBy('created_at', 'desc')->get();
 
 
         return view('dashbord.orders.index', compact('orders'));
@@ -35,7 +35,7 @@ public function destroy(Order $order)
     // أولاً نحذف العناصر المرتبطة
     $order->items()->delete();
 
-    // بعدين نحذف الطلب نفسه
+    // بعدين نحذف الطلب 
     $order->delete();
 
     return redirect()->back()->with('success', 'تم حذف الطلب بنجاح!');

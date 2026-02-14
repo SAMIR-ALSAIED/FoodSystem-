@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
 $products = Product::inRandomOrder()->take(6)->get();
 
-        $appUrl = 'http://192.168.1.10:8000/menu';
+        $appUrl = 'http://192.168.1.8:8000/menu';
 
         $sliders=Slider::all();
         return view('front.home', compact('products','appUrl','sliders'));

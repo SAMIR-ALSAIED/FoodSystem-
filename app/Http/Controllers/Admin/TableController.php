@@ -40,6 +40,13 @@ class TableController extends Controller
     }
 
 
+    public function getReservations(Table $table)
+{
+    $reservations = $table->reservations()->get();
+    return response()->json($reservations);
+}
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -90,6 +90,14 @@
                 </li>
                 @endcan
 
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.customer-orders.index') }}" class="nav-link ">
+                        <i class="nav-icon fas fa-receipt"></i>
+                        <p>الطلبات الموقع </p>
+                    </a>
+                </li>
+
                 <!-- شاشة المطبخ -->
                 @can('المطبخ')
                 <li class="nav-item">
@@ -180,9 +188,6 @@
                         @endcan
 
                               @can('اسليدر الموقع ')
-
-
-
 
 
                               <li class="nav-item">

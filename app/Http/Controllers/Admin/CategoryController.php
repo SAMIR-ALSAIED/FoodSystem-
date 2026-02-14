@@ -15,27 +15,16 @@ class CategoryController extends Controller
     {
         $categories=Category::all();
 
-    //         $search = $request->input('search');
-
-    // $categories = Category::when($search, function ($query, $search) {
-    //     $query->where('name', 'LIKE', "%{$search}%");
-    // })->get();
-
 
         return View('dashbord.categories.index',compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('dashbord.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(AddCategoryRequest $request)
     {
 
@@ -53,9 +42,7 @@ class CategoryController extends Controller
 
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Category $category)
     {
 
@@ -64,9 +51,7 @@ class CategoryController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpadateCategoryRequest $request, Category $category)
     {
             $data = $request->validated();
@@ -77,9 +62,7 @@ class CategoryController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+ 
     public function destroy(Category $category)
     {
 

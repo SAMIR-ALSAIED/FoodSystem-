@@ -1,17 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\CashierController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\TableController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerOrderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KitchenController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
@@ -33,7 +34,8 @@ Route::resource('products', ProductController::class)->middleware('permission:ا
 
 // tables
    Route::resource('tables', TableController::class)->middleware('permission:الطاولات');
-
+    Route::get('tables/{table}/reservations/ajax', [TableController::class, 'getReservations'])
+        ->name('tables.getReservations');
 
 
     // reservations
@@ -51,6 +53,9 @@ Route::post('orders/{order}/updateStatus', [KitchenController::class,'updateStat
 
 
 
+
+
+
 // cashier
 
      Route::get('orders/cashier', [CashierController::class,'cashier'])->name('orders.cashier')->middleware('permission:الكاشير');
@@ -60,6 +65,10 @@ Route::post('orders/cashier/store', [CashierController::class,'storeCashier'])->
     Route::resource('orders', OrderController::class);
 
      });
+
+
+     Route::get('customer-orders', [CustomerOrderController::class,'index'])->name('admin.customer-orders.index');
+
 
    Route::resource('sliders', SliderController::class);
 

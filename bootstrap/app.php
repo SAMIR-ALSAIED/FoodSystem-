@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
+use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,6 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+        
+    // Localization
+    'localeSessionRedirect' => LocaleSessionRedirect::class,
+    'localizationRedirect' => LaravelLocalizationRedirectFilter::class,
+    'localeViewPath' => LaravelLocalizationViewPath::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

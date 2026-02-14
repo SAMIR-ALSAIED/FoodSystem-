@@ -48,7 +48,7 @@ if ($request->hasFile('image')) {
 }
 
 else {
-    // لو مفيش صورة تم رفعها، استخدم الصورة الافتراضية
+   
     $data['image'] = 'default.jpg';
 }
 

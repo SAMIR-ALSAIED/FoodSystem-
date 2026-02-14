@@ -15,19 +15,21 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // العدادات
+        // العدادات لوحة التحكم
         $products_count = Product::count();
         $category_count = Category::count();
         $orders_count = Order::count();
         $users_count = User::count();
 
 
-$latest_orders = Order::latest()->take(10)->get();
+$latest_orders = Order::latest()->take(8)->get();
 
 
 
         // آخر 5 حجوزات
-        $latest_reservations = Reservation::latest()->take(5)->get();
+
+$latest_reservations = Reservation::orderBy('created_at', 'desc')->take(5)->get();
+
 
         // إيراد اليوم
         $today_income = Order::whereDate('created_at', Carbon::today())->sum('total');

@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('order_items')) {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
 
@@ -25,8 +26,9 @@ return new class extends Migration
             $table->decimal('price', 8, 2); // السعر عند إضافة الطلب
             $table->timestamps();
         });
+        
     }
-
+    }
     /**
      * Reverse the migrations.
      */

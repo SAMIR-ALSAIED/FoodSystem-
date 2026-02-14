@@ -49,14 +49,22 @@
                         <!-- Card Body -->
                         <div class="card-body d-flex flex-column flex-grow-1">
                             <h5 class="card-title text-center mb-3">{{ $product->name }}</h5>
+<div class="mt-auto">
+    <span class="d-block text-center fs-5 fw-bold mb-2">{{ $product->price }} جنية</span>
 
-                            <div class="mt-auto">
-                                <span class="d-block text-center fs-5 fw-bold mb-2">{{ $product->price }} جنية</span>
-                           <a href="#"
-   class="btn btn-success w-100 d-flex align-items-center justify-content-center">
-    <i class="fas fa-calendar-check me-2"></i> إحجز أوردر
-</a>
-                            </div>
+    <form action="{{ route('front.cart.add') }}" method="POST">
+        @csrf
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <input type="hidden" name="quantity" value="1">
+
+        <button type="submit"
+            class="btn btn-success w-100 d-flex align-items-center justify-content-center">
+            <i class="fas fa-cart-plus me-2"></i> اضافة الاوردر
+        </button>
+    </form>
+</div>
+
+
                         </div>
 
                     </div>
